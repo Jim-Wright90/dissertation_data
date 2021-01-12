@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>MLM</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Jim Wright Dissertation Data</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="participant_1.html">Participant 1</a>
+</li>
+<li>
+  <a href="participant_2.html">Participant 2</a>
+</li>
+<li>
+  <a href="participant_3.html">Participant 3</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="visual_analysis.html">Visual Analysis</a>
+</li>
+<li>
+  <a href="mlm.html">MLM</a>
+</li>
+<li>
+  <a href="tau.html">Tau-U</a>
+</li>
+<li>
+  <a href="https://github.com/Jim-Wright90/dissertation_data.git">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">MLM</h1>
+
+</div>
+
+
+<div id="null-unconditional-model" class="section level3">
+<h3>Null (unconditional) model</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>d.Null &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span>,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">coefficients</span>(d.Null)</span></code></pre></div>
+<pre><code>##   (Intercept)
+## 1    22.36181
+## 2    17.65275
+## 3    56.03160</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">intervals</span>(d.Null)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                lower     est.    upper
+## (Intercept) 6.392375 32.01538 57.63839
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                    lower     est.   upper
+## sd((Intercept)) 7.682303 21.40186 59.6227
+## 
+##  Within-group standard error:
+##    lower     est.    upper 
+## 13.05761 16.45049 20.72497</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">summary</span>(d.Null)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data 
+##        AIC      BIC    logLik
+##   336.6012 341.5139 -165.3006
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:    21.40186 16.45049
+## 
+## Fixed effects: DV ~ 1 
+##                Value Std.Error DF  t-value p-value
+## (Intercept) 32.01538  12.63403 36 2.534059  0.0158
+## 
+## Standardized Within-Group Residuals:
+##        Min         Q1        Med         Q3        Max 
+## -1.8863634 -0.6857975 -0.1435708  0.5351390  2.2879681 
+## 
+## Number of Observations: 39
+## Number of Groups: 3</code></pre>
+</div>
+<div id="model-with-random-intercept-and-change-in-level-with-an-autocorrelation-component" class="section level3">
+<h3>Model with random intercept and change in level (with an autocorrelation component)</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>d.Level &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span><span class="op">+</span>Phase,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="dt">correlation=</span><span class="kw">corAR1</span>(<span class="dt">form=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case),<span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">coefficients</span>(d.Level)</span></code></pre></div>
+<pre><code>##   (Intercept)    Phase
+## 1    15.40752 10.00082
+## 2    13.29236 10.00082
+## 3    49.48923 10.00082</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">intervals</span>(d.Level)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                 lower     est.    upper
+## (Intercept) -1.380122 26.06304 53.50619
+## Phase       -4.068261 10.00082 24.06990
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                    lower    est.   upper
+## sd((Intercept)) 7.115908 21.3682 64.1661
+## 
+##  Correlation structure:
+##           lower     est.     upper
+## Phi -0.02263883 0.440788 0.7482907
+## attr(,&quot;label&quot;)
+## [1] &quot;Correlation structure:&quot;
+## 
+##  Within-group standard error:
+##    lower     est.    upper 
+## 11.41304 16.28684 23.24196</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">summary</span>(d.Level)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data 
+##        AIC      BIC    logLik
+##   322.9988 331.0534 -156.4994
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:     21.3682 16.28684
+## 
+## Correlation Structure: AR(1)
+##  Formula: ~1 | Case 
+##  Parameter estimate(s):
+##      Phi 
+## 0.440788 
+## Fixed effects: DV ~ 1 + Phase 
+##                Value Std.Error DF  t-value p-value
+## (Intercept) 26.06304 13.518078 35 1.928013  0.0620
+## Phase       10.00082  6.930214 35 1.443075  0.1579
+##  Correlation: 
+##       (Intr)
+## Phase -0.286
+## 
+## Standardized Within-Group Residuals:
+##        Min         Q1        Med         Q3        Max 
+## -1.5036200 -0.5091951 -0.2021484  0.4117936  2.4191778 
+## 
+## Number of Observations: 39
+## Number of Groups: 3</code></pre>
+</div>
+<div id="model-with-random-intercept-and-change-in-slope-with-an-autocorrelation-component" class="section level3">
+<h3>Model with random intercept and change in slope (with an autocorrelation component)</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>d.Time &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span><span class="op">+</span>Time_CTR,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="dt">correlation=</span><span class="kw">corAR1</span>(<span class="dt">form=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case),<span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co"># Rename variables and use only complete cases</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="kw">coefficients</span>(d.Time)</span></code></pre></div>
+<pre><code>##   (Intercept) Time_CTR
+## 1    15.87831  2.21768
+## 2    17.89118  2.21768
+## 3    59.23677  2.21768</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">intervals</span>(d.Time)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                 lower     est.     upper
+## (Intercept) 0.8009746 31.00209 61.203198
+## Time_CTR    0.6003623  2.21768  3.834997
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                    lower     est.    upper
+## sd((Intercept)) 8.891678 25.14045 71.08245
+## 
+##  Correlation structure:
+##           lower      est.     upper
+## Phi -0.03942438 0.3546773 0.6532877
+## attr(,&quot;label&quot;)
+## [1] &quot;Correlation structure:&quot;
+## 
+##  Within-group standard error:
+##    lower     est.    upper 
+## 10.80212 14.58824 19.70140</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">summary</span>(d.Time)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data 
+##        AIC      BIC    logLik
+##   323.3998 331.4544 -156.6999
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:    25.14045 14.58824
+## 
+## Correlation Structure: AR(1)
+##  Formula: ~1 | Case 
+##  Parameter estimate(s):
+##       Phi 
+## 0.3546773 
+## Fixed effects: DV ~ 1 + Time_CTR 
+##                Value Std.Error DF  t-value p-value
+## (Intercept) 31.00209 14.876604 35 2.083949  0.0445
+## Time_CTR     2.21768  0.796666 35 2.783702  0.0086
+##  Correlation: 
+##          (Intr)
+## Time_CTR -0.018
+## 
+## Standardized Within-Group Residuals:
+##        Min         Q1        Med         Q3        Max 
+## -1.6577996 -0.4525852 -0.1444650  0.4236217  2.5684140 
+## 
+## Number of Observations: 39
+## Number of Groups: 3</code></pre>
+</div>
+<div id="model-with-random-intercept-and-change-in-levelslope-in-tx-with-autocorrelation" class="section level3">
+<h3>Model with random intercept and change in level/slope in Tx (with autocorrelation)</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>d.Model &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span><span class="op">+</span>Phase<span class="op">+</span>Time_PhaseCTR,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="dt">correlation=</span><span class="kw">corAR1</span>(<span class="dt">form=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case),<span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># Rename variables and use only complete cases</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="kw">coefficients</span>(d.Model)</span></code></pre></div>
+<pre><code>##   (Intercept)    Phase Time_PhaseCTR
+## 1    13.97170 10.58153      1.925606
+## 2    12.83588 10.58153      1.925606
+## 3    48.36788 10.58153      1.925606</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">intervals</span>(d.Model)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                   lower      est.     upper
+## (Intercept)   -2.908232 25.058488 53.025208
+## Phase         -4.310147 10.581525 25.473198
+## Time_PhaseCTR -1.890291  1.925606  5.741502
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                    lower    est.    upper
+## sd((Intercept)) 7.009376 21.4318 65.52964
+## 
+##  Correlation structure:
+##          lower      est.     upper
+## Phi 0.01169996 0.4877283 0.7835304
+## attr(,&quot;label&quot;)
+## [1] &quot;Correlation structure:&quot;
+## 
+##  Within-group standard error:
+##    lower     est.    upper 
+## 11.35531 16.82246 24.92184</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">summary</span>(d.Model)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data 
+##        AIC     BIC    logLik
+##   320.9029 330.404 -154.4514
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:     21.4318 16.82246
+## 
+## Correlation Structure: AR(1)
+##  Formula: ~1 | Case 
+##  Parameter estimate(s):
+##       Phi 
+## 0.4877283 
+## Fixed effects: DV ~ 1 + Phase + Time_PhaseCTR 
+##                   Value Std.Error DF  t-value p-value
+## (Intercept)   25.058488 13.761494 34 1.820913  0.0774
+## Phase         10.581525  7.327697 34 1.444045  0.1579
+## Time_PhaseCTR  1.925606  1.877676 34 1.025526  0.3124
+##  Correlation: 
+##               (Intr) Phase 
+## Phase         -0.304       
+## Time_PhaseCTR -0.099  0.186
+## 
+## Standardized Within-Group Residuals:
+##        Min         Q1        Med         Q3        Max 
+## -1.3912610 -0.3517564 -0.1569682  0.3806276  2.4088102 
+## 
+## Number of Observations: 39
+## Number of Groups: 3</code></pre>
+<p>Results:</p>
+<p>Autocorrelation: 0.49</p>
+<p>Effect size of change between phases: 10.58, <em>p</em> = 0.158</p>
+<p>Slope: 1.93, <em>p</em> = .312</p>
+</div>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="by-nc.png" width="65"/></a>
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+</p>
+<script src="highlight-custom.js"></script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

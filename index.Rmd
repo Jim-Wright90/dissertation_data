@@ -1,0 +1,36 @@
+---
+title: "What is the Effect of Personalized Cognitive Strategy Instruction on Facilitating Return-to-Learn for Individuals Experiencing Prolonged Concussion Symptoms?"
+---
+
+
+## Research Questions
+
+  1. Is there a functional relation between the addition of individualized cognitive strategy instruction to psychoeducation and the achievement of student RTL targets? 
+  2. Do selected scores on the pre/post outcome measures that aid in the treatment selection process yield positive change following the delivery of individualized cognitive strategy instruction? 
+  
+## Outcome Measures 
+
+  1. Goal Attainment Scaling (GAS)
+  2. Behavior Rating Index of Executive Functioning - 2 (BRIEF-2)
+  3. Concussion Learning Assessment and School Survey (CLASS)
+  4. Post-Concussion Symptom Scale (PCSS)
+  
+## Repeated Measures 
+
+  1. Status tracking measurement 
+  2. Measure of perceived frequency of strategy use 
+  3. Measure of perceived helpfulness of strategy 
+  
+## Treatment Implementation Measures 
+
+  1. Measurement of Treatment Fidelity 
+  2. Measurement of Social Validity and Treatment Appropriateness 
+      + TARF
+  3. Measurement of Treatment Compliance      
+  
+
+
+
+```{r, include=FALSE}
+#rmarkdown::render_site()
+```

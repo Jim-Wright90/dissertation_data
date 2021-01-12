@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Participant 1</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-16.12.0/react.min.js"></script>
+<script src="site_libs/react-16.12.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Jim Wright Dissertation Data</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="participant_1.html">Participant 1</a>
+</li>
+<li>
+  <a href="participant_2.html">Participant 2</a>
+</li>
+<li>
+  <a href="participant_3.html">Participant 3</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="visual_analysis.html">Visual Analysis</a>
+</li>
+<li>
+  <a href="mlm.html">MLM</a>
+</li>
+<li>
+  <a href="tau.html">Tau-U</a>
+</li>
+<li>
+  <a href="https://github.com/Jim-Wright90/dissertation_data.git">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Participant 1</h1>
+
+</div>
+
+
+<div id="demographic-information" class="section level2">
+<h2>Demographic Information</h2>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#lbjdehkjwt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lbjdehkjwt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lbjdehkjwt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lbjdehkjwt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lbjdehkjwt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lbjdehkjwt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lbjdehkjwt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lbjdehkjwt .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lbjdehkjwt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lbjdehkjwt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lbjdehkjwt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lbjdehkjwt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lbjdehkjwt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#lbjdehkjwt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lbjdehkjwt .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lbjdehkjwt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lbjdehkjwt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lbjdehkjwt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lbjdehkjwt .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lbjdehkjwt .gt_left {
+  text-align: left;
+}
+
+#lbjdehkjwt .gt_center {
+  text-align: center;
+}
+
+#lbjdehkjwt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lbjdehkjwt .gt_font_normal {
+  font-weight: normal;
+}
+
+#lbjdehkjwt .gt_font_bold {
+  font-weight: bold;
+}
+
+#lbjdehkjwt .gt_font_italic {
+  font-style: italic;
+}
+
+#lbjdehkjwt .gt_super {
+  font-size: 65%;
+}
+
+#lbjdehkjwt .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="lbjdehkjwt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style>Participant Demographics</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Sex</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Age</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Prior Concussions</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">History of Depression or Anxiety</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">Female</td>
+      <td class="gt_row gt_center">16</td>
+      <td class="gt_row gt_center">0</td>
+      <td class="gt_row gt_center">No</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<div id="outcome-measurements" class="section level2">
+<h2>Outcome Measurements</h2>
+<p>During the final session when discussing final outcome measurements (specifically the BRIEF, CLASS, and PCSS), the participant believed the general, negative trend in her responses across the three time points of collection was due to the demands of school. The participant enrolled in the study at the beginning of her school year where she believed her concussion was not severely impacting her academic performance. As the school year progressed in tandem with the study, she believed the increase in her academic demands was exacerbated by her concussion (e.g. much more time looking at a screen compared to the summer).</p>
+<p>The participant also reported that increased awareness to her perceived deficits influenced her responses on the post-treatment outcome measurements.</p>
+<div id="gas-hierarchy---number-of-minutes-per-class-engaged-in-online-literature-lecture-60-minute-class" class="section level3">
+<h3>GAS Hierarchy - Number of minutes per class engaged in online Literature lecture (60 minute class)</h3>
+<div id="htmlwidget-5d782d164d56d737360d" class="reactable html-widget" style="width:500px;height:200px;"></div>
+<script type="application/json" data-for="htmlwidget-5d782d164d56d737360d">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Level":["Much more than expected","More than expected","Expected","Baseline","Decline"],"Outcome":["36 to 45 minutes","26 to 35 minutes","16 to 25 minutes","6 to 15 minutes","0 to 5 minutes"]},"columns":[{"accessor":"Level","name":"Level","type":"character","align":"center"},{"accessor":"Outcome","name":"Outcome","type":"character","align":"center"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"200px","dataKey":"2d549200926c41e85f3adf832709eabb","key":"2d549200926c41e85f3adf832709eabb"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="brief-2" class="section level3 tabset tabset-fade tabset-pills">
+<h3>BRIEF-2</h3>
+<p>Self-report responses that guided treatment at time of pre-baseline data collection:</p>
+<ul>
+<li>Self-Monitor Scale</li>
+<li>Task Completion Scale</li>
+<li>Plan/Organize Scale</li>
+<li>Cognitive Regulation Index</li>
+</ul>
+<p>There were no scores in the clinically significant range on the pre-baseline parent-response. The highest score was the Working Memory scale, with a <em>T</em>-score of 62. The Working Memory scale increased to a clinically significant <em>T</em>-score of 67 on the post-treatment parent-response. Also, the Organization of Materials scale was observed to be clinically significant on the post-treatment parent-response (<em>T</em>-score = 67). Overall, the parent-response total scores remained relatively similar. Decreases in the BRI and ERI from pre-treatment to post-treatment were observed, while the CRI was observed to increase from pre- to post-treatment.</p>
+<p>Across the board, most self-report scale/index scores remained elevated or even increased, which may demonstrate increased self-awareness or increased self-perception of challenges.</p>
+<div id="brief-2-self-report" class="section level4">
+<h4>BRIEF-2 Self-Report</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-6-1.png" width="960" /></p>
+</div>
+<div id="brief-2-self-report-table-version-1" class="section level4">
+<h4>BRIEF-2 Self-Report Table Version 1</h4>
+<div id="htmlwidget-b4698e93d54037742eb6" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-b4698e93d54037742eb6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Task Completion Scale","Working Memory Scale","Plan/Organize Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre Baseline Phase":[64,55,62,52,79,66,69,78,60,70,68],"Pre Experimental Phase":[64,55,62,58,82,71,75,78,66,74,72],"Post Treatment":[67,46,59,71,79,77,86,82,63,78,75]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"numeric","align":"center","style":[{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"}]},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"numeric","align":"center","style":[{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"}]},{"accessor":"Post Treatment","name":"Post Treatment","type":"numeric","align":"center","style":[{"color":"#e00000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"}]}],"searchable":true,"defaultPageSize":11,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"69bbc121a0cee2cf5102759512361774","key":"69bbc121a0cee2cf5102759512361774"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="brief-2-self-report-table-version-2" class="section level4">
+<h4>BRIEF-2 Self-Report Table Version 2</h4>
+<div id="htmlwidget-bfe7b0edf8ca57ee958b" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-bfe7b0edf8ca57ee958b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Task Completion Scale","Working Memory Scale","Plan/Organize Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre Baseline Phase":[64,55,62,52,79,66,69,78,60,70,68],"Pre Experimental Phase":[64,55,62,58,82,71,75,78,66,74,72],"Post Treatment":[67,46,59,71,79,77,86,82,63,78,75]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"numeric","align":"center","style":[{"background":"#FFCF93"},{"background":"#FFDEBD"},{"background":"#FFD29C"},{"background":"#FFE4CC"},{"background":"#FFB54D"},{"background":"#FFCB8A"},{"background":"#FFC67C"},{"background":"#FFB651"},{"background":"#FFD6A6"},{"background":"#FFC477"},{"background":"#FFC880"}]},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"numeric","align":"center","style":[{"background":"#FFD4A1"},{"background":"#FFE4CC"},{"background":"#FFD7AB"},{"background":"#FFDEBD"},{"background":"#FFB54D"},{"background":"#FFC880"},{"background":"#FFC16D"},{"background":"#FFBB5F"},{"background":"#FFD098"},{"background":"#FFC272"},{"background":"#FFC67C"}]},{"accessor":"Post Treatment","name":"Post Treatment","type":"numeric","align":"center","style":[{"background":"#FFCB89"},{"background":"#FFE4CC"},{"background":"#FFD4A2"},{"background":"#FFC67C"},{"background":"#FFBD63"},{"background":"#FFBF69"},{"background":"#FFB54D"},{"background":"#FFB959"},{"background":"#FFD096"},{"background":"#FFBE66"},{"background":"#FFC16F"}]}],"searchable":true,"defaultPageSize":11,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"710d4c9f67c4c5fc680ff5768a9de2ac","key":"710d4c9f67c4c5fc680ff5768a9de2ac"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="brief-2-parent-report" class="section level4">
+<h4>BRIEF-2 Parent-Report</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-9-1.png" width="960" /></p>
+</div>
+<div id="brief-2-parent-report-version-1" class="section level4">
+<h4>BRIEF-2 Parent-Report Version 1</h4>
+<div id="htmlwidget-5f5635108ecc0b91f576" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-5f5635108ecc0b91f576">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Initiate Scale","Working Memory Scale","Plan/Organize Scale","Task-Monitor Scale","Organization of Materials Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre Baseline Phase":[47,55,50,58,56,57,44,62,48,49,57,53,54],"Pre Experimental Phase":[51,55,52,54,54,54,53,56,51,49,43,50,52],"Post Treatment":[44,45,44,44,60,52,49,67,53,44,67,58,54]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"numeric","align":"center","style":[{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"}]},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"numeric","align":"center","style":[{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"}]},{"accessor":"Post Treatment","name":"Post Treatment","type":"numeric","align":"center","style":[{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#e00000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"},{"color":"#008000","fontWeight":"bold"}]}],"searchable":true,"defaultPageSize":13,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"fb16a2d14d126c41605804b136a79f3d","key":"fb16a2d14d126c41605804b136a79f3d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="brief-2-parent-report-table-version-2" class="section level4">
+<h4>BRIEF-2 Parent-Report Table Version 2</h4>
+<div id="htmlwidget-1e50bfa43053febdf047" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-1e50bfa43053febdf047">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Initiate Scale","Working Memory Scale","Plan/Organize Scale","Task-Monitor Scale","Organization of Materials Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre Baseline Phase":[47,55,50,58,56,57,44,62,48,49,57,53,54],"Pre Experimental Phase":[51,55,52,54,54,54,53,56,51,49,43,50,52],"Post Treatment":[44,45,44,44,60,52,49,67,53,44,67,58,54]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"numeric","align":"center","style":[{"background":"#FFDCB6"},{"background":"#FFC77E"},{"background":"#FFD4A1"},{"background":"#FFBF69"},{"background":"#FFC477"},{"background":"#FFC270"},{"background":"#FFE4CC"},{"background":"#FFB54D"},{"background":"#FFD9AF"},{"background":"#FFD6A8"},{"background":"#FFC270"},{"background":"#FFCC8C"},{"background":"#FFC985"}]},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"numeric","align":"center","style":[{"background":"#FFC77D"},{"background":"#FFB856"},{"background":"#FFC374"},{"background":"#FFBC60"},{"background":"#FFBC60"},{"background":"#FFBC60"},{"background":"#FFBF6A"},{"background":"#FFB54D"},{"background":"#FFC77D"},{"background":"#FFCE91"},{"background":"#FFE4CC"},{"background":"#FFCA87"},{"background":"#FFC374"}]},{"accessor":"Post Treatment","name":"Post Treatment","type":"numeric","align":"center","style":[{"background":"#FFE4CC"},{"background":"#FFE1C6"},{"background":"#FFE4CC"},{"background":"#FFE4CC"},{"background":"#FFC373"},{"background":"#FFD39F"},{"background":"#FFD9B0"},{"background":"#FFB54D"},{"background":"#FFD19A"},{"background":"#FFE4CC"},{"background":"#FFB54D"},{"background":"#FFC77E"},{"background":"#FFCF94"}]}],"searchable":true,"defaultPageSize":13,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"25cc9d61abb50b185e22e28c7d03c283","key":"25cc9d61abb50b185e22e28c7d03c283"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="class" class="section level3 tabset tabset-fade tabset-pills">
+<h3>CLASS</h3>
+<p>Self-report responses that guided treatment at time of pre-baseline data collection:</p>
+<ul>
+<li>Difficulty understanding new material</li>
+<li>Trouble remembering what was studied</li>
+</ul>
+<p>Parent-report responses that guided treatment at time of pre-baseline data collection:</p>
+<ul>
+<li>Difficulty understanding new material</li>
+<li>Trouble remembering what was studied</li>
+</ul>
+<div id="class-self-1" class="section level4">
+<h4>CLASS Self 1</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-13-1.png" width="960" /></p>
+</div>
+<div id="class-self-2" class="section level4">
+<h4>CLASS Self 2</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-14-1.png" width="1056" /></p>
+</div>
+<div id="class-self-table" class="section level4">
+<h4>CLASS Self Table</h4>
+<div id="htmlwidget-8d139d7eb03165323990" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-8d139d7eb03165323990">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Question":["Difficulty taking notes","Difficulty understanding new material","In class, work taking longer","Homework taking longer","Difficulty studying for tests or quizzes","Trouble remembering what was studied","Trouble reading","Easily distracted during classwork","Easily distracted during homework","Headaches interfering with classwork","Headaches interfering with homework","Tiring easily during the school day","Tiring easily during homework","Easily bothered by lights/screens or noise","Missing time with friends and/or social activities","Not being allowed to play sports/recreation","Not having enough support from teachers","Not having enough support at home from parents/siblings","More stressed out/overwhelmed with the schoolwork piling up","Stressed out about your grades dropping"],"Pre Baseline Phase":["A little worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","A lot worse","Somewhat worse","Somewhat worse","A little worse","A lot worse","A little worse","A lot worse","Somewhat worse","A little worse","A little stressful","Very stressful","Moderately stressful","Very stressful","Very stressful","Very stressful"],"Pre Experimental Phase":["Somewhat worse","Somewhat worse","A lot worse","A lot worse","A lot worse","A lot worse","Somewhat worse","A little worse","A little worse","Somewhat worse","Somewhat worse","A lot worse","A lot worse","A lot worse","Moderately stressful","A little stressful","A little stressful","A little stressful","Very stressful","Very stressful"],"Post Treatment":["Somewhat worse","A lot worse","A lot worse","A lot worse","A lot worse","A lot worse","A lot worse","Somewhat worse","Somewhat worse","A lot worse","A lot worse","Somewhat worse","A little worse","A lot worse","Not stressful","Very stressful","Moderately stressful","A little stressful","Very stressful","Very stressful"]},"columns":[{"accessor":"Question","name":"Question","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"character","align":"center"},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"character","align":"center"},{"accessor":"Post Treatment","name":"Post Treatment","type":"character","align":"center"}],"searchable":true,"defaultPageSize":20,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"98a90634279c1253eb96c97a2f4db667","key":"98a90634279c1253eb96c97a2f4db667"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="class-parent-1" class="section level4">
+<h4>CLASS Parent 1</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-16-1.png" width="960" /></p>
+</div>
+<div id="class-parent-2" class="section level4">
+<h4>CLASS parent 2</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-17-1.png" width="1056" /></p>
+</div>
+<div id="class-parent-table" class="section level4">
+<h4>ClASS Parent Table</h4>
+<div id="htmlwidget-2eca121326474df0bd23" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-2eca121326474df0bd23">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Question":["Difficulty taking notes","Difficulty understanding new material","In class, work taking longer","Homework taking longer","Difficulty studying for tests or quizzes","Trouble remembering what was studied","Trouble reading","Easily distracted during classwork","Easily distracted during homework","Headaches interfering with classwork","Headaches interfering with homework","Tiring easily during the school day","Tiring easily during homework","Easily bothered by lights/screens or noise","Missing time with friends and/or social activities","Not being allowed to play sports/recreation","Not having enough support from teachers","Not having enough support at home from parents/siblings","More stressed out/overwhelmed with the schoolwork piling up","Stressed out about your grades dropping"],"Pre Baseline Phase":["Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","A lot worse","Somewhat worse","Somewhat worse","Somewhat worse","A lot worse","Somewhat worse","Somewhat worse","Somewhat worse","A lot worse","Moderately stressful","Very stressful","A little stressful","Not stressful","Moderately stressful","Moderately stressful"],"Pre Experimental Phase":["A little worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","A little stressful","A little stressful","Moderately stressful","Not stressful","Moderately stressful","Moderately stressful"],"Post Treatment":["A little worse","Somewhat worse","Somewhat worse","Somewhat worse","Somewhat worse","A lot worse","A lot worse","Somewhat worse","A little worse","A lot worse","A lot worse","A lot worse","Somewhat worse","A lot worse","Not stressful","Moderately stressful","A little stressful","A little stressful","Moderately stressful","Very stressful"]},"columns":[{"accessor":"Question","name":"Question","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"character","align":"center"},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"character","align":"center"},{"accessor":"Post Treatment","name":"Post Treatment","type":"character","align":"center"}],"searchable":true,"defaultPageSize":20,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"e4d6e88fe77b600a10a6fae18458a0df","key":"e4d6e88fe77b600a10a6fae18458a0df"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="pcss" class="section level3 tabset tabset-fade tabset-pills">
+<h3>PCSS</h3>
+<p>Pre-baseline symptom severity levels that guided treatment selection:</p>
+<ul>
+<li>Difficulty concentrating</li>
+<li>Feeling “slow”</li>
+<li>Feeling “foggy”</li>
+<li>Cognitive symptom cluster</li>
+</ul>
+<div id="all-scores" class="section level4">
+<h4>All Scores</h4>
+<div id="htmlwidget-12137fa95b84e310a03e" class="reactable html-widget" style="width:600px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-12137fa95b84e310a03e">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Symptom":["Headache","Nausea","Vomiting","Balance problems","Dizziness","Fatigue","Trouble falling asleep","Excessive sleep","Loss of sleep","Drowsiness","Light sensitivity","Noise sensitivity","Irritability","Sadness","Nervousness","More emotional","Numbness","Feeling \"slow\"","Feeling \"foggy\"","Difficulty concentrating","Difficulty remembering","Visual problems","Total Score","Headache-Migraine Cluster","Cognitive Cluster","Anxiety-Mood Cluster","Ocular-Motor Cluster","Vestibular Cluster","Sleep Cluster"],"Pre Baseline Phase":[2,4,0,4,1,4,6,4,1,3,6,4,3,5,0,5,3,6,3,2,5,0,71,12,16,16,0,9,18],"Pre Experimental Phase":[2,4,3,4,2,5,3,4,1,3,5,3,4,5,1,3,3,3,6,4,6,2,76,10,19,16,2,13,16],"Post Treatment":[4,4,2,5,3,4,2,4,2,2,5,3,3,3,2,2,5,6,5,3,6,2,77,12,20,15,2,14,14]},"columns":[{"accessor":"Symptom","name":"Symptom","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"numeric","align":"center"},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"numeric","align":"center"},{"accessor":"Post Treatment","name":"Post Treatment","type":"numeric","align":"center"}],"searchable":true,"defaultPageSize":29,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"600px","height":"600px","dataKey":"1d36216e2f32d30465919e8b1190b65b","key":"1d36216e2f32d30465919e8b1190b65b"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="symptom-scores" class="section level4">
+<h4>Symptom Scores</h4>
+<div id="htmlwidget-58fd75ec929b42163bc2" class="reactable html-widget" style="width:600px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-58fd75ec929b42163bc2">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Symptom":["Headache","Nausea","Vomiting","Balance problems","Dizziness","Fatigue","Trouble falling asleep","Excessive sleep","Loss of sleep","Drowsiness","Light sensitivity","Noise sensitivity","Irritability","Sadness","Nervousness","More emotional","Numbness","Feeling \"slow\"","Feeling \"foggy\"","Difficulty concentrating","Difficulty remembering","Visual problems"],"Pre Baseline Phase":[2,4,0,4,1,4,6,4,1,3,6,4,3,5,0,5,3,6,3,2,5,0],"Pre Experimental Phase":[2,4,3,4,2,5,3,4,1,3,5,3,4,5,1,3,3,3,6,4,6,2],"Post Treatment":[4,4,2,5,3,4,2,4,2,2,5,3,3,3,2,2,5,6,5,3,6,2]},"columns":[{"accessor":"Symptom","name":"Symptom","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"numeric","align":"center","style":[{"background":"#FFD4A1"},{"background":"#FFC477"},{"background":"#FFE4CC"},{"background":"#FFC477"},{"background":"#FFDCB6"},{"background":"#FFC477"},{"background":"#FFB54D"},{"background":"#FFC477"},{"background":"#FFDCB6"},{"background":"#FFCC8C"},{"background":"#FFB54D"},{"background":"#FFC477"},{"background":"#FFCC8C"},{"background":"#FFBC62"},{"background":"#FFE4CC"},{"background":"#FFBC62"},{"background":"#FFCC8C"},{"background":"#FFB54D"},{"background":"#FFCC8C"},{"background":"#FFD4A1"},{"background":"#FFBC62"},{"background":"#FFE4CC"}]},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"numeric","align":"center","style":[{"background":"#FFDAB2"},{"background":"#FFC77F"},{"background":"#FFD199"},{"background":"#FFC77F"},{"background":"#FFDAB2"},{"background":"#FFBE66"},{"background":"#FFD199"},{"background":"#FFC77F"},{"background":"#FFE4CC"},{"background":"#FFD199"},{"background":"#FFBE66"},{"background":"#FFD199"},{"background":"#FFC77F"},{"background":"#FFBE66"},{"background":"#FFE4CC"},{"background":"#FFD199"},{"background":"#FFD199"},{"background":"#FFD199"},{"background":"#FFB54D"},{"background":"#FFC77F"},{"background":"#FFB54D"},{"background":"#FFDAB2"}]},{"accessor":"Post Treatment","name":"Post Treatment","type":"numeric","align":"center","style":[{"background":"#FFCC8C"},{"background":"#FFCC8C"},{"background":"#FFE4CC"},{"background":"#FFC06C"},{"background":"#FFD8AC"},{"background":"#FFCC8C"},{"background":"#FFE4CC"},{"background":"#FFCC8C"},{"background":"#FFE4CC"},{"background":"#FFE4CC"},{"background":"#FFC06C"},{"background":"#FFD8AC"},{"background":"#FFD8AC"},{"background":"#FFD8AC"},{"background":"#FFE4CC"},{"background":"#FFE4CC"},{"background":"#FFC06C"},{"background":"#FFB54D"},{"background":"#FFC06C"},{"background":"#FFD8AC"},{"background":"#FFB54D"},{"background":"#FFE4CC"}]}],"searchable":true,"defaultPageSize":22,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"600px","height":"600px","dataKey":"3ba3dfb4b43eaa84f1ceba6fe7c38898","key":"3ba3dfb4b43eaa84f1ceba6fe7c38898"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="total-and-cluster-scores" class="section level4">
+<h4>Total and Cluster Scores</h4>
+<div id="htmlwidget-21fe100c95693e3744c8" class="reactable html-widget" style="width:600px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-21fe100c95693e3744c8">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Symptom":["Total Score","Headache-Migraine Cluster","Cognitive Cluster","Anxiety-Mood Cluster","Ocular-Motor Cluster","Vestibular Cluster","Sleep Cluster"],"Pre Baseline Phase":[71,12,16,16,0,9,18],"Pre Experimental Phase":[76,10,19,16,2,13,16],"Post Treatment":[77,12,20,15,2,14,14]},"columns":[{"accessor":"Symptom","name":"Symptom","type":"character","align":"center"},{"accessor":"Pre Baseline Phase","name":"Pre Baseline Phase","type":"numeric","align":"center","style":[{"background":"#FFB54D"},{"background":"#FFDCB6"},{"background":"#FFD9AF"},{"background":"#FFD9AF"},{"background":"#FFE4CC"},{"background":"#FFDEBB"},{"background":"#FFD8AB"}]},{"accessor":"Pre Experimental Phase","name":"Pre Experimental Phase","type":"numeric","align":"center","style":[{"background":"#FFB54D"},{"background":"#FFDEBE"},{"background":"#FFD9AE"},{"background":"#FFDBB3"},{"background":"#FFE4CC"},{"background":"#FFDDB9"},{"background":"#FFDBB3"}]},{"accessor":"Post Treatment","name":"Post Treatment","type":"numeric","align":"center","style":[{"background":"#FFB54D"},{"background":"#FFDDBB"},{"background":"#FFD8AD"},{"background":"#FFDBB5"},{"background":"#FFE4CC"},{"background":"#FFDCB7"},{"background":"#FFDCB7"}]}],"searchable":true,"defaultPageSize":7,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"600px","height":"600px","dataKey":"aa3b477d2a881a922add5f0552ea275e","key":"aa3b477d2a881a922add5f0552ea275e"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="repeated-measurements" class="section level2">
+<h2>Repeated Measurements</h2>
+<div id="status-tracking-measurement" class="section level3">
+<h3>Status Tracking Measurement</h3>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="repeated-strategy-measurements" class="section level3 tabset tabset-fade tabset-pills">
+<h3>Repeated Strategy Measurements</h3>
+<p>Cognitive Strategy: Engage in online lecture for 15 minutes removed from distractions, take a 5-minute break, and rejoin online lecture for at least 15 more minutes.</p>
+<p>Cognitive Strategy 2: Set reminders in phone to remember to take a break during lecture (developed during session 10 to be measured sessions 11-13). Participant will adhere to the two set reminders per week.</p>
+<ul>
+<li>Discussion to add additional reminders to best utilize strategy to re-engage in lecture (6 reminders per class lecture) occurred during session 12. Strategy adjusted to adhere to the 12 set reminders per week.</li>
+</ul>
+<div id="frequency-of-use-of-break-strategy" class="section level4">
+<h4>Frequency of Use of Break Strategy</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+</div>
+<div id="perceived-helpfulness-of-break-strategy" class="section level4">
+<h4>Perceived Helpfulness of Break Strategy</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+</div>
+<div id="frequency-of-use-of-reminders-strategy" class="section level4">
+<h4>Frequency of Use of Reminders Strategy</h4>
+<p>Participant reported she only attended one class period prior to session 13 due to the start of the holiday break, which reduced her ability to adhere to all 12 reminders. She further clarified it was a reduced class period, so she only felt the need to adhere to 3 out of the 6 reminders per that class period to utilize the break strategy; however, she reported positive benefit of the reminders strategy.</p>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="perceived-helpfulness-of-reminders-strategy" class="section level4">
+<h4>Perceived Helpfulness of Reminders Strategy</h4>
+<p><img src="participant_1_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="treatment-implementation-measurements" class="section level2">
+<h2>Treatment Implementation Measurements</h2>
+<div id="tarf" class="section level3">
+<h3>TARF</h3>
+<p>The TARF is used to measure social validity.</p>
+<div id="htmlwidget-91d15e22ba86f0cd3e99" class="reactable html-widget" style="width:600px;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-91d15e22ba86f0cd3e99">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Question":["The clinician's teaching of the cognitive strategy was effective","I was motivated to use my strategy outside of therapy sessions","The duration of time to learn my cognitive strategy was longer than anticipated","I am confident I learned my cognitive strategy","Learning a cognitive strategy helped me reach my school and other goals","I liked attending therapy sessions","I experienced discomfort learning and implementing a cognitive strategy to address my school and other goals","To what extent do you feel like you understand the concept and importance of cognitive strategy instruction?","Anything else you would like to share with us?"],"Response":["Agree","Agree","Agree","Agree","Strongly agree","Strongly agree","Disagree",null,null]},"columns":[{"accessor":"Question","name":"Question","type":"character","align":"left"},{"accessor":"Response","name":"Response","type":"character","align":"center"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"600px","height":"500px","dataKey":"6484ff9170500f00135ff27fa53a698d","key":"6484ff9170500f00135ff27fa53a698d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="treatment-compliance" class="section level3">
+<h3>Treatment Compliance</h3>
+<p>Participant 1 rescheduled her tenth session two consecutive weeks, resulting in two total canceled/rescheduled sessions.</p>
+</div>
+</div>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="by-nc.png" width="65"/></a>
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+</p>
+<script src="highlight-custom.js"></script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

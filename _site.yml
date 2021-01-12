@@ -1,0 +1,29 @@
+name: Management of Acquired Cognitive Impairments
+output_dir: '.'
+navbar:
+  title: Jim Wright Dissertation Data
+  left:
+  - text: Participant 1
+    href: participant_1.html
+  - text: Participant 2
+    href: participant_2.html
+  - text: Participant 3
+    href: participant_3.html
+  right:
+  - text: Visual Analysis
+    href: visual_analysis.html
+  - text: MLM
+    href: mlm.html
+  - text: Tau-U
+    href: tau.html
+  - icon: fa-github
+    href: https://github.com/Jim-Wright90/dissertation_data.git
+output:
+  html_document:
+    theme: journal
+    css: website-custom.css
+    includes:
+      after_body: footer.html
+    lib_dir: site_libs
+    self_contained: no
+

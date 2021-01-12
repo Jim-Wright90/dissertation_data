@@ -1,0 +1,196 @@
+---
+title: "Visual Analysis"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: spacelab
+    highlight: tango
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r setup 1, include=FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(gghighlight)
+library(forcats)
+library(ggrepel)
+library(gt)
+library(knitr)
+library(kableExtra)
+library(reactable)
+library(plotly)
+library(SCVA)
+library(patchwork)
+library(colorblindr)
+library(scan)
+theme_set(theme_minimal(15) +
+            theme(legend.position = "bottom",
+                  panel.grid.major.x = element_line(color = "gray60"),
+                  panel.grid.minor.x = element_blank(),
+                  panel.grid.major.y = element_blank())
+          )
+
+kahi <- import(here("data", "KAHI_status_goal.xlsx"),
+               setclass = "tbl_df") 
+
+gasy <- import(here("data", "GASY_status_goal.xlsx"),
+               setclass = "tbl_df") 
+
+gozo <- import(here("data", "GOZO_status_goal.xlsx"),
+               setclass = "tbl_df") 
+ 
+```
+
+
+## Patchwork Code 
+
+Most likely, this is the plot that will be used in the final manuscript. The plots were created individually in Rstudio with the ggplot package. They are then stacked together with the patchwork package to create one image. I intend to save this image and upload it into PowerPoint to add the dashed line between baselines and text identifiers (e.g., phases, participants)
+
+```{r, include=FALSE}
+head(kahi)
+
+kahi_plot <- ggplot() +
+  geom_line(data = kahi, aes(x = session, y = bl)) +
+  geom_point(data = kahi, aes(x = session, y = bl), size = 2) +
+  geom_line(data = kahi, aes(x = session, y = tx)) +
+  geom_point(data = kahi, aes(x = session, y = tx), size = 2) +
+  scale_x_continuous(limits = c(0, 13),
+                     breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)) +
+  scale_y_continuous(limits = c(0, 60),
+                     breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60)) +
+  theme_classic() +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.line.x = element_blank()) +
+  labs(x = "Session",
+       y = "Minutes Engaged\n in Online Literature Lecture\n (Average between Two Classes)") 
+
+kahi_plot
+
+
+gasy_plot <- ggplot() +
+  geom_line(data = gasy, aes(x = session, y = bl)) +
+  geom_point(data = gasy, aes(x = session, y = bl), size = 2) +
+  geom_line(data = gasy, aes(x = session, y = tx)) +
+  geom_point(data = gasy, aes(x = session, y = tx), size = 2) +
+  scale_x_continuous(limits = c(0, 13),
+                     breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)) +
+  scale_y_continuous(limits = c(0, 60),
+                     breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60)) +
+  theme_classic() +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.line.x = element_blank()) +
+  labs(x = "Session",
+       y = "Minutes per Week Spent\n Studying for Spanish Class") 
+
+
+gasy_plot
+
+
+gozo_plot <- ggplot() +
+  geom_line(data = gozo, aes(x = session, y = bl)) +
+  geom_point(data = gozo, aes(x = session, y = bl), size = 2) +
+  geom_line(data = gozo, aes(x = session, y = tx)) +
+  geom_point(data = gozo, aes(x = session, y = tx), size = 2) +
+  scale_x_continuous(limits = c(0, 13),
+                     breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)) +
+  scale_y_continuous(limits = c(0, 100),
+                     breaks = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)) +
+  theme_classic() +
+  labs(x = "Session",
+       y = "Percentage of Weekly\n Assignments Completed") 
+
+
+gozo_plot
+
+
+all_plots <- gasy_plot / kahi_plot / gozo_plot
+
+all_plots
+```
+
+```{r, include=TRUE, fig.height=9, fig.width=10}
+all_plots
+```
+
+
+## SCAN Demonstration {.tabset .tabset-fade .tabset-pills}
+
+These are plots created with the SCAN package, which is a R packaged designed specifically the plot and analyze single case research data. 
+
+```{r, include=FALSE}
+case_1 <- scdf(
+  values = c(A = 10, 5, 15, B = 5, 25, 20, 60, 30, 10, 5, 10, 60, 30), 
+  name = "GASY"
+)
+
+case_2 <- scdf(
+  values = c(A = 10, 10, 10, 3, 10, 10, B = 15, 35, 15, 30, 20, 23, 30), 
+  name = "KAHI"
+)
+
+case_3 <- scdf(
+  values = c(A = 25, 26.32, 35.71, 45.83, 62.5, 88.89, 62.5, 69.57, 
+             B = 70, 69.57, 60, 60.71, 66), 
+  name = "GOZO"
+)
+
+all_mbl_data <- c(case_1, case_2, case_3)
+```
+
+
+```{r, include=FALSE}
+marks <- list(
+  positions = list( c(8, 9), c(17, 19), c(7, 18) ), 
+  col = 'red', cex = 2.5, pch = 1
+)
+
+plot(exampleAB, marks = marks, style = "sienna")
+
+head(exampleAB)
+exampleAB
+
+plot(exampleAB)
+plot(all_mbl_data) 
+```
+
+### Version 1
+
+```{r, include=TRUE, fig.height=8, fig.width=10}
+plot(all_mbl_data)
+```
+
+```{r, include=FALSE}
+plot_style = style_plotSC(style = "chart",
+                          fill = "grey50",
+                          grid = "lightblue",
+                          pch = 16)
+plot_v2 <- plot(
+  all_mbl_data,
+  xlab = "session",
+  ylab = "Participant Measurement",
+  phase.names = c("Baseline", "Treatment"),
+  ylim = c(0, 100),
+  style = plot_style)
+```
+
+### Version 2
+
+```{r, include=TRUE, fig.height=8, fig.width=10}
+plot(
+  all_mbl_data,
+  xlab = "session",
+  ylab = "Participant Measurement",
+  phase.names = c("Baseline", "Treatment"),
+  ylim = c(0, 100),
+  style = plot_style)
+```
