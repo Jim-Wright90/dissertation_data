@@ -8,4 +8,12 @@ output:
     highlight: tango
 ---
 
-### Tau-U 
+## Results 
+
+| **Value** | **Score** |
+| :-------- | :-------: |
+| Tau-U     | .605      |
+| *z*-Score | 2.93      |
+| *p*-value | .0034     | 
+
+The [Single Case Research free calculator](http://www.singlecaseresearch.org/) was utilized to calculate the Tau-U effect size. The first and second participants required a baseline trend correction. The weighted Tau-U score was determined to be .605 with a z-score of 2.93 and p-value of .0034, suggesting a moderate effect. The Tau-U calculation appears to support a treatment effect while visual analysis and MLM do not appear to strongly support a functional relation. 
