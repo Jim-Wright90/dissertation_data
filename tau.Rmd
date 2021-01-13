@@ -2,8 +2,6 @@
 title: "Tau-U"
 output:
   html_document:
-    toc: true
-    toc_float: true
     theme: spacelab
     highlight: tango
 ---
@@ -17,3 +15,5 @@ output:
 | *p*-value | .0034     | 
 
 The [Single Case Research free calculator](http://www.singlecaseresearch.org/) was utilized to calculate the Tau-U effect size. The first and second participants required a baseline trend correction. The weighted Tau-U score was determined to be .605 with a z-score of 2.93 and p-value of .0034, suggesting a moderate effect. The Tau-U calculation appears to support a treatment effect while visual analysis and MLM do not appear to strongly support a functional relation. 
+
+Why the Tau-U calculation appears to support the existence of a moderate treatment effect (and this is a good topic to discuss with Kent) is because the calculation is an overlap method designed to characterize the trends in overlapping data between the two phases of the design. Participant 1 did not have any overlapping data points, while participants 2 and 3 obtained some overlap from baseline to experimental phases. My hypothesis is that because there was no overlapping data for participant 1, whose number of sessions per phase was the most balanced, strenghted the Tau-U calculation. 

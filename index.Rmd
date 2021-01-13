@@ -2,8 +2,6 @@
 title: "What is the Effect of Personalized Cognitive Strategy Instruction on Facilitating Return-to-Learn for Individuals Experiencing Prolonged Concussion Symptoms?"
 output:
   html_document:
-    toc: true
-    toc_float: true
     theme: spacelab
     highlight: tango
 ---
