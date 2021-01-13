@@ -484,43 +484,43 @@ div.tocify {
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">coefficients</span>(d.Null)</span></code></pre></div>
 <pre><code>##   (Intercept)
 ## 1    22.36181
-## 2    17.65275
-## 3    56.03160</code></pre>
+## 2    17.65467
+## 3    55.76044</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">intervals</span>(d.Null)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                lower     est.    upper
-## (Intercept) 6.392375 32.01538 57.63839
+## (Intercept) 6.483477 31.92564 57.36781
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: Case 
-##                    lower     est.   upper
-## sd((Intercept)) 7.682303 21.40186 59.6227
+##                    lower     est.    upper
+## sd((Intercept)) 7.623288 21.24647 59.21495
 ## 
 ##  Within-group standard error:
 ##    lower     est.    upper 
-## 13.05761 16.45049 20.72497</code></pre>
+## 13.02350 16.40752 20.67083</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">summary</span>(d.Null)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
 ##        AIC      BIC    logLik
-##   336.6012 341.5139 -165.3006
+##   336.3845 341.2973 -165.1923
 ## 
 ## Random effects:
 ##  Formula: ~1 | Case
 ##         (Intercept) Residual
-## StdDev:    21.40186 16.45049
+## StdDev:    21.24647 16.40752
 ## 
 ## Fixed effects: DV ~ 1 
 ##                Value Std.Error DF  t-value p-value
-## (Intercept) 32.01538  12.63403 36 2.534059  0.0158
+## (Intercept) 31.92564  12.54486 36 2.544917  0.0154
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -1.8863634 -0.6857975 -0.1435708  0.5351390  2.2879681 
+## -1.8747776 -0.6793306 -0.1439468  0.4655299  2.2939603 
 ## 
 ## Number of Observations: 39
 ## Number of Groups: 3</code></pre>
@@ -531,60 +531,60 @@ div.tocify {
 <span id="cb7-2"><a href="#cb7-2"></a><span class="dt">correlation=</span><span class="kw">corAR1</span>(<span class="dt">form=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case),<span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="kw">coefficients</span>(d.Level)</span></code></pre></div>
 <pre><code>##   (Intercept)    Phase
-## 1    15.40752 10.00082
-## 2    13.29236 10.00082
-## 3    49.48923 10.00082</code></pre>
+## 1    15.73926 9.602826
+## 2    13.56880 9.602826
+## 3    49.08711 9.602826</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">intervals</span>(d.Level)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                 lower     est.    upper
-## (Intercept) -1.380122 26.06304 53.50619
-## Phase       -4.068261 10.00082 24.06990
+##                  lower      est.    upper
+## (Intercept) -0.9615989 26.131723 53.22505
+## Phase       -4.5345833  9.602826 23.74024
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: Case 
-##                    lower    est.   upper
-## sd((Intercept)) 7.115908 21.3682 64.1661
+##                    lower     est.    upper
+## sd((Intercept)) 6.932852 21.00574 63.64498
 ## 
 ##  Correlation structure:
-##           lower     est.     upper
-## Phi -0.02263883 0.440788 0.7482907
+##           lower      est.     upper
+## Phi -0.01880442 0.4481973 0.7546592
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Correlation structure:&quot;
 ## 
 ##  Within-group standard error:
 ##    lower     est.    upper 
-## 11.41304 16.28684 23.24196</code></pre>
+## 11.39588 16.34640 23.44749</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">summary</span>(d.Level)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
 ##        AIC      BIC    logLik
-##   322.9988 331.0534 -156.4994
+##   322.8533 330.9079 -156.4266
 ## 
 ## Random effects:
 ##  Formula: ~1 | Case
 ##         (Intercept) Residual
-## StdDev:     21.3682 16.28684
+## StdDev:    21.00574  16.3464
 ## 
 ## Correlation Structure: AR(1)
 ##  Formula: ~1 | Case 
 ##  Parameter estimate(s):
-##      Phi 
-## 0.440788 
+##       Phi 
+## 0.4481973 
 ## Fixed effects: DV ~ 1 + Phase 
-##                Value Std.Error DF  t-value p-value
-## (Intercept) 26.06304 13.518078 35 1.928013  0.0620
-## Phase       10.00082  6.930214 35 1.443075  0.1579
+##                 Value Std.Error DF  t-value p-value
+## (Intercept) 26.131723 13.345755 35 1.958055  0.0582
+## Phase        9.602826  6.963871 35 1.378950  0.1767
 ##  Correlation: 
 ##       (Intr)
-## Phase -0.286
+## Phase -0.291
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -1.5036200 -0.5091951 -0.2021484  0.4117936  2.4191778 
+## -1.4735422 -0.4999034 -0.1940257  0.4177298  2.4349632 
 ## 
 ## Number of Observations: 39
 ## Number of Groups: 3</code></pre>
@@ -596,60 +596,60 @@ div.tocify {
 <span id="cb13-3"><a href="#cb13-3"></a><span class="co"># Rename variables and use only complete cases</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="kw">coefficients</span>(d.Time)</span></code></pre></div>
 <pre><code>##   (Intercept) Time_CTR
-## 1    15.87831  2.21768
-## 2    17.89118  2.21768
-## 3    59.23677  2.21768</code></pre>
+## 1    16.06773 2.162206
+## 2    17.92851 2.162206
+## 3    58.65117 2.162206</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">intervals</span>(d.Time)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
-##                 lower     est.     upper
-## (Intercept) 0.8009746 31.00209 61.203198
-## Time_CTR    0.6003623  2.21768  3.834997
+##                 lower      est.     upper
+## (Intercept) 1.0873106 30.882469 60.677627
+## Time_CTR    0.5279087  2.162206  3.796503
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: Case 
 ##                    lower     est.    upper
-## sd((Intercept)) 8.891678 25.14045 71.08245
+## sd((Intercept)) 8.723114 24.76794 70.32473
 ## 
 ##  Correlation structure:
 ##           lower      est.     upper
-## Phi -0.03942438 0.3546773 0.6532877
+## Phi -0.03559898 0.3624528 0.6612477
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Correlation structure:&quot;
 ## 
 ##  Within-group standard error:
 ##    lower     est.    upper 
-## 10.80212 14.58824 19.70140</code></pre>
+## 10.82437 14.67279 19.88943</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">summary</span>(d.Time)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
 ##        AIC      BIC    logLik
-##   323.3998 331.4544 -156.6999
+##   323.4649 331.5195 -156.7324
 ## 
 ## Random effects:
 ##  Formula: ~1 | Case
 ##         (Intercept) Residual
-## StdDev:    25.14045 14.58824
+## StdDev:    24.76794 14.67279
 ## 
 ## Correlation Structure: AR(1)
 ##  Formula: ~1 | Case 
 ##  Parameter estimate(s):
 ##       Phi 
-## 0.3546773 
+## 0.3624528 
 ## Fixed effects: DV ~ 1 + Time_CTR 
-##                Value Std.Error DF  t-value p-value
-## (Intercept) 31.00209 14.876604 35 2.083949  0.0445
-## Time_CTR     2.21768  0.796666 35 2.783702  0.0086
+##                 Value Std.Error DF  t-value p-value
+## (Intercept) 30.882469  14.67664 35 2.104192  0.0426
+## Time_CTR     2.162206   0.80503 35 2.685871  0.0110
 ##  Correlation: 
 ##          (Intr)
 ## Time_CTR -0.018
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -1.6577996 -0.4525852 -0.1444650  0.4236217  2.5684140 
+## -1.6384733 -0.4539238 -0.1369975  0.4210153  2.5520479 
 ## 
 ## Number of Observations: 39
 ## Number of Groups: 3</code></pre>
@@ -662,70 +662,70 @@ div.tocify {
 <span id="cb19-4"><a href="#cb19-4"></a><span class="co"># Rename variables and use only complete cases</span></span>
 <span id="cb19-5"><a href="#cb19-5"></a><span class="kw">coefficients</span>(d.Model)</span></code></pre></div>
 <pre><code>##   (Intercept)    Phase Time_PhaseCTR
-## 1    13.97170 10.58153      1.925606
-## 2    12.83588 10.58153      1.925606
-## 3    48.36788 10.58153      1.925606</code></pre>
+## 1    14.36588 10.17285      1.840509
+## 2    13.13904 10.17285      1.840509
+## 3    47.92556 10.17285      1.840509</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">intervals</span>(d.Model)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
 ##                   lower      est.     upper
-## (Intercept)   -2.908232 25.058488 53.025208
-## Phase         -4.310147 10.581525 25.473198
-## Time_PhaseCTR -1.890291  1.925606  5.741502
+## (Intercept)   -2.427525 25.143492 52.714510
+## Phase         -4.810155 10.172848 25.155851
+## Time_PhaseCTR -1.996903  1.840509  5.677921
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Fixed effects:&quot;
 ## 
 ##  Random Effects:
 ##   Level: Case 
-##                    lower    est.    upper
-## sd((Intercept)) 7.009376 21.4318 65.52964
+##                    lower     est.    upper
+## sd((Intercept)) 6.800279 21.00765 64.89753
 ## 
 ##  Correlation structure:
 ##          lower      est.     upper
-## Phi 0.01169996 0.4877283 0.7835304
+## Phi 0.01384826 0.4938386 0.7888575
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Correlation structure:&quot;
 ## 
 ##  Within-group standard error:
 ##    lower     est.    upper 
-## 11.35531 16.82246 24.92184</code></pre>
+## 11.34610 16.90492 25.18718</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">summary</span>(d.Model)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
-##        AIC     BIC    logLik
-##   320.9029 330.404 -154.4514
+##        AIC      BIC   logLik
+##   320.8441 330.3452 -154.422
 ## 
 ## Random effects:
 ##  Formula: ~1 | Case
 ##         (Intercept) Residual
-## StdDev:     21.4318 16.82246
+## StdDev:    21.00765 16.90492
 ## 
 ## Correlation Structure: AR(1)
 ##  Formula: ~1 | Case 
 ##  Parameter estimate(s):
 ##       Phi 
-## 0.4877283 
+## 0.4938386 
 ## Fixed effects: DV ~ 1 + Phase + Time_PhaseCTR 
-##                   Value Std.Error DF  t-value p-value
-## (Intercept)   25.058488 13.761494 34 1.820913  0.0774
-## Phase         10.581525  7.327697 34 1.444045  0.1579
-## Time_PhaseCTR  1.925606  1.877676 34 1.025526  0.3124
+##                   Value Std.Error DF   t-value p-value
+## (Intercept)   25.143492 13.566782 34 1.8533129  0.0725
+## Phase         10.172848  7.372638 34 1.3798112  0.1767
+## Time_PhaseCTR  1.840509  1.888263 34 0.9747101  0.3366
 ##  Correlation: 
 ##               (Intr) Phase 
-## Phase         -0.304       
-## Time_PhaseCTR -0.099  0.186
+## Phase         -0.311       
+## Time_PhaseCTR -0.104  0.191
 ## 
 ## Standardized Within-Group Residuals:
 ##        Min         Q1        Med         Q3        Max 
-## -1.3912610 -0.3517564 -0.1569682  0.3806276  2.4088102 
+## -1.3735497 -0.3437985 -0.1650619  0.3747701  2.4232263 
 ## 
 ## Number of Observations: 39
 ## Number of Groups: 3</code></pre>
 <p>Results:</p>
 <p>Autocorrelation: 0.49</p>
-<p>Effect size of change between phases: 10.58, <em>p</em> = 0.158</p>
-<p>Slope: 1.93, <em>p</em> = .312</p>
+<p>Effect size of change between phases: 10.17, <em>p</em> = 0.177</p>
+<p>Slope: 1.84, <em>p</em> = .337</p>
 </div>
 
 <p>

@@ -75,7 +75,7 @@ Results:
 
 Autocorrelation: 0.49 
 
-Effect size of change between phases: 10.58, *p* = 0.158 
+Effect size of change between phases: 10.17, *p* = 0.177
 
-Slope: 1.93, *p* = .312
+Slope: 1.84, *p* = .337
 
