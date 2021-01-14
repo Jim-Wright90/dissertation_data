@@ -85,7 +85,7 @@ rci_tbl <- function(df) {
     compact = TRUE,
     highlight = TRUE,
     bordered = TRUE,
-    height = 600,
+    height = 500,
     width = 500)
 }
   
