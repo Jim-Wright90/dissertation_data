@@ -1,0 +1,198 @@
+---
+title: "Reliable Change Idex"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r setup 1, include=FALSE}
+library(tidyverse)
+library(rio)
+library(here)
+library(colorblindr)
+library(gghighlight)
+library(forcats)
+library(ggrepel)
+library(gt)
+library(knitr)
+library(kableExtra)
+library(reactable)
+library(plotly)
+library(SCVA)
+library(patchwork)
+
+
+theme_set(theme_minimal(15) +
+            theme(legend.position = "bottom",
+                  panel.grid.major.x = element_line(color = "gray60"),
+                  panel.grid.minor.x = element_blank(),
+                  panel.grid.major.y = element_blank())
+          )
+
+kahi_rci_self <- import(here("data", "KAHI_RCI_self.xlsx"),
+               setclass = "tbl_df") 
+ 
+kahi_rci_parent <- import(here("data", "KAHI_RCI_parent.xlsx"),
+               setclass = "tbl_df") 
+
+gasy_rci_self <- import(here("data", "GASY_RCI_self.xlsx"),
+               setclass = "tbl_df") 
+ 
+gasy_rci_parent <- import(here("data", "GASY_RCI_parent.xlsx"),
+               setclass = "tbl_df") 
+
+gozo_rci_self <- import(here("data", "GOZO_RCI_self.xlsx"),
+               setclass = "tbl_df") 
+ 
+gozo_rci_parent <- import(here("data", "GOZO_RCI_parent.xlsx"),
+               setclass = "tbl_df") 
+
+```
+
+## Description 
+
+A reliable change index (RCI) was calculated to further address the second research question, specifically to address the nature of change on responses to the BRIEF-2 obtained at three different time points of the study. RCI calculations were obtained for all BRIEF-2 scale and index responses from both participants and parents. The first RCI calculation characterizes the degree of change in responses to the BRIEF-2 prior to the first baseline session and prior to the experimental phase of the session. The second RCI calculation characterizes the degree of change in responses prior to the experimental phase and the conclusion of the study. As stated in Jacobson and colleagues (1991 and 1999), the value of calculating RCI is that it provides a measurement of _how much_ change has occurred following an intervention. As defined in the same two papers, an absolute RCI value exceeding _z_ = 1.96 corresponds to meaningful change. 
+
+To calculate RCI for BRIEF-2 responses, both parent and self-report test-retest reliability coefficients were utilized. Additionally, the standard deviations for all scales and indices used in RCI calculations were obtain from the typically developing population used to norm the BRIEF-2 compared to a TBI population. I decided to use scores from typically developing individuals as I believe concussion clients are more similar in functioning to typically developing individuals than moderate to severe TBI individuals. 
+
+## KAHI - Participant 1 {.tabset .tabset-fade .tabset-pills}
+
+### Self-Report
+
+No significant RCI values obtained. 
+
+```{r, include=FALSE}
+
+rci_tbl <- function(df) {
+  df %>% 
+  reactable(
+    columns = list(
+      `Scale/Index` = colDef(align = "center"),
+      `Pre-Baseline/Pre-Experimental` = colDef(name = "Pre-Baseline/Pre-Experimental",
+                                    align = "center",
+                                    format = colFormat(digits = 2)),
+      `Pre-Experimental/Post-Experimental` = colDef(name = "Pre-Experimental/Post-Experimental",
+                                        align = "center",
+                                        format = colFormat(digits = 2))),
+    pagination = FALSE,
+    striped = TRUE,
+    outlined = TRUE,
+    compact = TRUE,
+    highlight = TRUE,
+    bordered = TRUE,
+    height = 600,
+    width = 500)
+}
+  
+rci_tbl(kahi_rci_self)
+
+```
+
+```{r, include=TRUE}
+rci_tbl(kahi_rci_self)
+```
+
+
+### Parent-Report 
+
+No significant RCI values obtained. 
+
+```{r, include=TRUE}
+rci_tbl(kahi_rci_parent)
+```
+
+
+## GASY - Participant 2 {.tabset .tabset-fade .tabset-pills}
+
+
+### Self-Report
+
+No significant RCI values obtained comparing pre-baseline and pre-experimental phase responses. There were significant RCI values obtained comparing responses pre-experimental phase and post-experimental phase, including: 
+
+  * Inhibit Scale
+  * Working Memory Scale
+  * Plan/Organize Scale
+  * Cognitive Regulation Index 
+  * Global Executive Composite 
+
+
+```{r, include=TRUE}
+rci_tbl(gasy_rci_self)
+```
+
+
+### Parent-Report 
+
+Significant RCI values obtained comparing pre-baseline and pre-experimental phase responses:
+
+  * Organization of Materials Scale
+  
+Significant RCI values obtained comparing pre-experimental and post-experimental phase responses: 
+
+* Working Memory Scale 
+
+
+```{r, include=TRUE}
+rci_tbl(gasy_rci_parent)
+```
+
+
+## GOZO - Participant 3 {.tabset .tabset-fade .tabset-pills}
+
+### Self-Report
+
+Significant RCI values obtained comparing pre-baseline and pre-experimental responses: 
+
+  * Inhibit Scale
+  * Working Memory Scale
+  * Plan/Organize Scale
+  * Cognitive Regulation Index
+  * Global Executive Composite 
+  
+Significant RCI values obtained comparing pre-experimental and post-experimental responses: 
+
+  * Inhibit Scale
+  * Behavior Regulation Index 
+  * Shift Scale
+  * Emotional Regulation Index
+  * Task Completion Scale
+  * Working Memory Scale
+  * Plan/Organize Scale
+  * Cognitive Regulation Index
+  * Global Executive Composite 
+
+```{r, include=TRUE}
+rci_tbl(gozo_rci_self)
+```
+
+
+### Parent-Report 
+
+Significant RCI values obtained comparing pre-baseline and pre-experimental responses: 
+
+  * Emotional Control Scale
+  * Emotional Regulation Index
+  * Plan/Organize Scale
+  * Task-Monitor Scale
+  * Global Executive Composite 
+  
+Significant RCI values obtained comparing pre-experimental and post-experimental responses: 
+
+  * Inhibit Scale
+  * Self-Monitor Scale
+  * Behavior Regulation Index 
+  * Emotional Control Scale
+  * Emotional Regulation Index
+  * Working Memory Scale
+  * Task-Monitor Scale
+  * Cognitive Regulation Index
+  * Global Executive Composite 
+
+```{r, include=TRUE}
+rci_tbl(gozo_rci_parent)
+```

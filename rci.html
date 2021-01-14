@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Reliable Change Idex</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-16.12.0/react.min.js"></script>
+<script src="site_libs/react-16.12.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Jim Wright Dissertation Data</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="participant_1.html">Participant 1</a>
+</li>
+<li>
+  <a href="participant_2.html">Participant 2</a>
+</li>
+<li>
+  <a href="participant_3.html">Participant 3</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="visual_analysis.html">Visual Analysis</a>
+</li>
+<li>
+  <a href="mlm.html">MLM</a>
+</li>
+<li>
+  <a href="tau.html">Tau-U</a>
+</li>
+<li>
+  <a href="rci.html">RCI</a>
+</li>
+<li>
+  <a href="https://github.com/Jim-Wright90/dissertation_data.git">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Reliable Change Idex</h1>
+
+</div>
+
+
+<div id="description" class="section level2">
+<h2>Description</h2>
+<p>A reliable change index (RCI) was calculated to further address the second research question, specifically to address the nature of change on responses to the BRIEF-2 obtained at three different time points of the study. RCI calculations were obtained for all BRIEF-2 scale and index responses from both participants and parents. The first RCI calculation characterizes the degree of change in responses to the BRIEF-2 prior to the first baseline session and prior to the experimental phase of the session. The second RCI calculation characterizes the degree of change in responses prior to the experimental phase and the conclusion of the study. As stated in Jacobson and colleagues (1991 and 1999), the value of calculating RCI is that it provides a measurement of <em>how much</em> change has occurred following an intervention. As defined in the same two papers, an absolute RCI value exceeding <em>z</em> = 1.96 corresponds to meaningful change.</p>
+<p>To calculate RCI for BRIEF-2 responses, both parent and self-report test-retest reliability coefficients were utilized. Additionally, the standard deviations for all scales and indices used in RCI calculations were obtain from the typically developing population used to norm the BRIEF-2 compared to a TBI population. I decided to use scores from typically developing individuals as I believe concussion clients are more similar in functioning to typically developing individuals than moderate to severe TBI individuals.</p>
+</div>
+<div id="kahi---participant-1" class="section level2 tabset tabset-fade tabset-pills">
+<h2>KAHI - Participant 1</h2>
+<div id="self-report" class="section level3">
+<h3>Self-Report</h3>
+<p>No significant RCI values obtained.</p>
+<div id="htmlwidget-dba84395d61625cacd80" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-dba84395d61625cacd80">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Task Completion Scale","Working Memory Scale","Plan/Organize Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre-Baseline/Pre-Experimental":[0,0,0,0.8,0.49,0.86,0.99,0,1.25,0.97,1.03],"Pre-Experimental/Post-Experimental":[0.61,-1.34,-0.57,1.73,-0.49,1.03,1.81,0.8,-0.63,0.97,0.77]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre-Baseline/Pre-Experimental","name":"Pre-Baseline/Pre-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"},{"accessor":"Pre-Experimental/Post-Experimental","name":"Pre-Experimental/Post-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"}],"defaultPageSize":11,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"d39ecbc7115dc1b82a3044ed710dc252","key":"d39ecbc7115dc1b82a3044ed710dc252"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="parent-report" class="section level3">
+<h3>Parent-Report</h3>
+<p>No significant RCI values obtained.</p>
+<div id="htmlwidget-b33998f7fbeb1e77e699" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-b33998f7fbeb1e77e699">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Initiate Scale","Working Memory Scale","Plan/Organize Scale","Task-Monitor Scale","Organization of Materials Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre-Baseline/Pre-Experimental":[0.83,0,0.44,-0.83,-0.35,-0.65,1.95,-2.41,0.74,0,-3.45,-1.05,-0.68],"Pre-Experimental/Post-Experimental":[-1.45,-1.72,-1.78,-2.08,1.05,-0.43,-0.87,4.42,0.49,-1,5.91,2.81,0.68]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre-Baseline/Pre-Experimental","name":"Pre-Baseline/Pre-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"},{"accessor":"Pre-Experimental/Post-Experimental","name":"Pre-Experimental/Post-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"}],"defaultPageSize":13,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"cfd49a2e5bf05f1b63d522e13ebc5640","key":"cfd49a2e5bf05f1b63d522e13ebc5640"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="gasy---participant-2" class="section level2 tabset tabset-fade tabset-pills">
+<h2>GASY - Participant 2</h2>
+<div id="self-report-1" class="section level3">
+<h3>Self-Report</h3>
+<p>No significant RCI values obtained comparing pre-baseline and pre-experimental phase responses. There were significant RCI values obtained comparing responses pre-experimental phase and post-experimental phase, including:</p>
+<ul>
+<li>Inhibit Scale</li>
+<li>Working Memory Scale</li>
+<li>Plan/Organize Scale</li>
+<li>Cognitive Regulation Index</li>
+<li>Global Executive Composite</li>
+</ul>
+<div id="htmlwidget-d404d6caf93ad7bc7e5c" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-d404d6caf93ad7bc7e5c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Task Completion Scale","Working Memory Scale","Plan/Organize Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre-Baseline/Pre-Experimental":[-1.82,0,-1.14,0.53,-0.65,0,-0.66,-0.8,-1.67,-1.46,-1.29],"Pre-Experimental/Post-Experimental":[-2.03,-0.74,-1.52,-0.93,0.65,-0.34,-1.64,-2.61,-2.72,-3.16,-2.31]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre-Baseline/Pre-Experimental","name":"Pre-Baseline/Pre-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"},{"accessor":"Pre-Experimental/Post-Experimental","name":"Pre-Experimental/Post-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"}],"defaultPageSize":11,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"62681bd299c152804dac21d8153ae2cf","key":"62681bd299c152804dac21d8153ae2cf"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="parent-report-1" class="section level3">
+<h3>Parent-Report</h3>
+<p>Significant RCI values obtained comparing pre-baseline and pre-experimental phase responses:</p>
+<ul>
+<li>Organization of Materials Scale</li>
+</ul>
+<p>Significant RCI values obtained comparing pre-experimental and post-experimental phase responses:</p>
+<ul>
+<li>Working Memory Scale</li>
+</ul>
+<div id="htmlwidget-5910b8fc68d133d63490" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-5910b8fc68d133d63490">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Initiate Scale","Working Memory Scale","Plan/Organize Scale","Task-Monitor Scale","Organization of Materials Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre-Baseline/Pre-Experimental":[-1.24,0.86,-0.44,0,-2.11,-1.52,-0.87,1.21,-1.23,0,-2.71,-1.4,-1.71],"Pre-Experimental/Post-Experimental":[0.62,0,0.44,-1.45,0,-0.87,-0.87,-3.62,0,-1.6,-0.74,-1.76,-1.03]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre-Baseline/Pre-Experimental","name":"Pre-Baseline/Pre-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"},{"accessor":"Pre-Experimental/Post-Experimental","name":"Pre-Experimental/Post-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"}],"defaultPageSize":13,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"c7b49cc894286545157d10e9874bf97a","key":"c7b49cc894286545157d10e9874bf97a"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="gozo---participant-3" class="section level2 tabset tabset-fade tabset-pills">
+<h2>GOZO - Participant 3</h2>
+<div id="self-report-2" class="section level3">
+<h3>Self-Report</h3>
+<p>Significant RCI values obtained comparing pre-baseline and pre-experimental responses:</p>
+<ul>
+<li>Inhibit Scale</li>
+<li>Working Memory Scale</li>
+<li>Plan/Organize Scale</li>
+<li>Cognitive Regulation Index</li>
+<li>Global Executive Composite</li>
+</ul>
+<p>Significant RCI values obtained comparing pre-experimental and post-experimental responses:</p>
+<ul>
+<li>Inhibit Scale</li>
+<li>Behavior Regulation Index</li>
+<li>Shift Scale</li>
+<li>Emotional Regulation Index</li>
+<li>Task Completion Scale</li>
+<li>Working Memory Scale</li>
+<li>Plan/Organize Scale</li>
+<li>Cognitive Regulation Index</li>
+<li>Global Executive Composite</li>
+</ul>
+<div id="htmlwidget-824fc21783650d21b275" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-824fc21783650d21b275">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Task Completion Scale","Working Memory Scale","Plan/Organize Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre-Baseline/Pre-Experimental":[3.04,-0.59,1.52,0.93,-1.13,0,0.66,2.41,2.72,2.67,2.06],"Pre-Experimental/Post-Experimental":[-3.04,-0.74,-2.28,-2.26,-1.13,-2.23,-2.96,-4.22,-2.72,-4.61,-4.37]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre-Baseline/Pre-Experimental","name":"Pre-Baseline/Pre-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"},{"accessor":"Pre-Experimental/Post-Experimental","name":"Pre-Experimental/Post-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"}],"defaultPageSize":11,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"8de35490a183bec45c2504f3e8024d99","key":"8de35490a183bec45c2504f3e8024d99"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="parent-report-2" class="section level3">
+<h3>Parent-Report</h3>
+<p>Significant RCI values obtained comparing pre-baseline and pre-experimental responses:</p>
+<ul>
+<li>Emotional Control Scale</li>
+<li>Emotional Regulation Index</li>
+<li>Plan/Organize Scale</li>
+<li>Task-Monitor Scale</li>
+<li>Global Executive Composite</li>
+</ul>
+<p>Significant RCI values obtained comparing pre-experimental and post-experimental responses:</p>
+<ul>
+<li>Inhibit Scale</li>
+<li>Self-Monitor Scale</li>
+<li>Behavior Regulation Index</li>
+<li>Emotional Control Scale</li>
+<li>Emotional Regulation Index</li>
+<li>Working Memory Scale</li>
+<li>Task-Monitor Scale</li>
+<li>Cognitive Regulation Index</li>
+<li>Global Executive Composite</li>
+</ul>
+<div id="htmlwidget-4af3d01a6f0adeb76d41" class="reactable html-widget" style="width:500px;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-4af3d01a6f0adeb76d41">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Scale/Index":["Inhibit Scale","Self-Monitor Scale","Behavior Regulation Index","Shift Scale","Emotional Control Scale","Emotional Regulation Index","Initiate Scale","Working Memory Scale","Plan/Organize Scale","Task-Monitor Scale","Organization of Materials Scale","Cognitive Regulation Index","Global Executive Composite"],"Pre-Baseline/Pre-Experimental":[-1.24,-0.86,-1.56,-0.83,-3.69,-3.46,0,-0.8,-3.19,2.81,-0.98,-0.7,-2.4],"Pre-Experimental/Post-Experimental":[-3.51,-2.75,-4,-0.62,-2.46,-2.16,-1.95,-4.42,-1.23,-2.81,-0.74,-3.51,-4.11]},"columns":[{"accessor":"Scale/Index","name":"Scale/Index","type":"character","align":"center"},{"accessor":"Pre-Baseline/Pre-Experimental","name":"Pre-Baseline/Pre-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"},{"accessor":"Pre-Experimental/Post-Experimental","name":"Pre-Experimental/Post-Experimental","type":"numeric","format":{"cell":{"digits":2},"aggregated":{"digits":2}},"align":"center"}],"defaultPageSize":13,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"bordered":true,"striped":true,"compact":true,"width":"500px","height":"600px","dataKey":"61663efaf91a0f2603d93309e3fab5d4","key":"61663efaf91a0f2603d93309e3fab5d4"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="by-nc.png" width="65"/></a>
+<link rel="stylesheet" href="website-custom.css" type="text/css" />
+</p>
+<script src="highlight-custom.js"></script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

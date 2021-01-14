@@ -16,6 +16,8 @@ navbar:
     href: mlm.html
   - text: Tau-U
     href: tau.html
+  - text: RCI
+    href: rci.html  
   - icon: fa-github
     href: https://github.com/Jim-Wright90/dissertation_data.git
 output:
