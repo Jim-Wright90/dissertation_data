@@ -746,7 +746,7 @@ class_parent_1_plot
 class_parent_2_plot
 ```
 
-#### ClASS Parent Table
+#### CLASS Parent Table
 
 ```{r, include=TRUE, fig.height=8}
 class_tbl(class_parent_all)
