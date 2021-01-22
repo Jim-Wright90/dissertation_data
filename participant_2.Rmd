@@ -969,7 +969,7 @@ help_plot <- ggplot(strategy, aes(session, help)) +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
        y = "Helpfulness of Reminders Strategy",
-       title = "Perceived Helpfulness of Strategy",
+       title = "Perceived Strategy Helpfulness",
        caption = "1 = Not Helpful at All\n 2 = Not Helpful\n 3 = Somewhat Helpful\n 4 = Helpful\n 5 = Very Helpful") 
 
 help_plot
@@ -1018,7 +1018,7 @@ help_plot2 <- ggplot(strategy, aes(session, help_2)) +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
        y = "Helpfulness of Study Partner Strategy",
-       title = "Perceived Helpfulness of Strategy",
+       title = "Perceived Strategy Helpfulness",
        caption = "1 = Not Helpful at All\n 2 = Not Helpful\n 3 = Somewhat Helpful\n 4 = Helpful\n 5 = Very Helpful") 
 
 help_plot2
