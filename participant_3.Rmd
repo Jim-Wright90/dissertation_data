@@ -1044,8 +1044,8 @@ freq_plot_1 <- ggplot(strategy, aes(session, freq)) +
   theme_classic() +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
-       y = "Percent",
-       title = "Percentage of Assignments Entered into Planner per Week") 
+       y = "Percentage of Assignments Entered into Planner per Week",
+       title = "Frequency of Strategy Use") 
   
 freq_plot_1
 
@@ -1061,10 +1061,12 @@ freq_plot_2 <- ggplot(strategy, aes(session, freq_2)) +
   theme_classic() +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
-       y = "Days",
-       title = "Number of Days per Week Participant used Planner to Track Assignments") 
+       y = "Number of Days per Week Participant used Planner to Track Assignments",
+       title = "Frequency of Strategy Use") 
 
 freq_plot_2
+
+combined_plot_1 <- freq_plot_1 + freq_plot_2
 
 
 help_plot <- ggplot(strategy, aes(session, help)) +
@@ -1077,8 +1079,8 @@ help_plot <- ggplot(strategy, aes(session, help)) +
   theme_classic() +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
-       y = "Level of Helpfulness",
-       title = "Perceived Helpfulness of Academic Planner",
+       y = "Helpfulness of Academic Planner",
+       title = "Perceived Helpfulness of Strategy",
        caption = "1 = Not Helpful at All\n 2 = Not Helpful\n 3 = Somewhat Helpful\n 4 = Helpful\n 5 = Very Helpful") 
 
 help_plot

@@ -975,7 +975,7 @@ freq_plot <- ggplot(strategy, aes(session, freq)) +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
       y = "Number of Lectures per Week\n Implementing Break Strategy",
-      title = "Frequency of Use of Break Strategy",
+      title = "Frequency of Strategy Use",
       caption = "60-minute lecture, 2 days per week") 
   
 freq_plot
@@ -996,6 +996,8 @@ help_plot <- ggplot(strategy, aes(session, help)) +
        caption = "1 = Not Helpful at All\n 2 = Not Helpful\n 3 = Somewhat Helpful\n 4 = Helpful\n 5 = Very Helpful") 
 
 help_plot
+
+combined_plot_1 <- freq_plot + help_plot
 
 ```
 
@@ -1026,7 +1028,7 @@ freq_plot2 <- ggplot(strategy, aes(session, freq_2)) +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
       y = "Number of Reminders Adhered to",
-      title = "Frequency of Use of Reminder Strategy",
+      title = "Frequency of Strategy Use",
       caption = "60-minute lecture, 2 days per week") 
 
 freq_plot2
@@ -1047,7 +1049,7 @@ help_plot2 <- ggplot(strategy, aes(session, help_2)) +
 
 help_plot2
 
-
+combined_plot_2 <- freq_plot2 + help_plot2
 ```
 
 ```{r, include=TRUE}

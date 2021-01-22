@@ -952,8 +952,8 @@ freq_plot <- ggplot(strategy, aes(session, freq)) +
   theme_classic() +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
-       y = "Number of Reminders",
-       title = "Weekly Number of Study Reminders Adhered To") 
+       y = "Number of Reminders Adhered to",
+       title = "Frequency of Strategy Use") 
   
 freq_plot
 
@@ -968,11 +968,13 @@ help_plot <- ggplot(strategy, aes(session, help)) +
   theme_classic() +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
-       y = "Level of Helpfulness",
-       title = "Perceived Helpfulness of Study Reminders",
+       y = "Helpfulness of Reminders Strategy",
+       title = "Perceived Helpfulness of Strategy",
        caption = "1 = Not Helpful at All\n 2 = Not Helpful\n 3 = Somewhat Helpful\n 4 = Helpful\n 5 = Very Helpful") 
 
 help_plot
+
+combined_plot_1 <- freq_plot + help_plot
 
 ```
 
@@ -1000,8 +1002,8 @@ freq_plot2 <- ggplot(strategy, aes(session, freq_2)) +
   theme_classic() +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
-       y = "Number of Study Sessions",
-       title = "Weekly Number of Study Sessions with Accountability Partner") 
+       y = "Number of Weekly Study Sessions with Partner",
+       title = "Frequency of Strategy Use") 
   
 freq_plot2
 
@@ -1015,11 +1017,13 @@ help_plot2 <- ggplot(strategy, aes(session, help_2)) +
   theme_classic() +
   theme(plot.title = element_text(color = "black", face = "bold", hjust = 0.5)) +
   labs(x = "Session",
-       y = "Level of Helpfulness",
-       title = "Perceived Helpfulness of Accountability Partner",
+       y = "Helpfulness of Study Partner Strategy",
+       title = "Perceived Helpfulness of Strategy",
        caption = "1 = Not Helpful at All\n 2 = Not Helpful\n 3 = Somewhat Helpful\n 4 = Helpful\n 5 = Very Helpful") 
 
 help_plot2
+
+combined_plot_2 <- freq_plot2 + help_plot2
 
 ```
 
