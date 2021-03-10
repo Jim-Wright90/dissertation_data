@@ -30,7 +30,7 @@ output:
   1. Measurement of Treatment Fidelity 
   2. Measurement of Social Validity and Treatment Appropriateness 
       + TARF
-  3. Measurement of Treatment Compliance      
+  3. Measurement of Treatment Attendance       
   
 
 
