@@ -32,7 +32,10 @@ output:
       + TARF
   3. Measurement of Treatment Attendance       
   
+## Dissertation Defense Materials 
 
+  1. [Presentation Slides](handouts/dissertation defense_JW_v2_publish.pptx)
+  2. [Presentation Handouts](handouts/dissertation defense_JW_handouts.pdf)
 
 
 ```{r, include=FALSE}
