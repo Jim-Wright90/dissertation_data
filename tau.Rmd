@@ -29,3 +29,15 @@ Why the Tau-U calculation appears to support the existence of a moderate treatme
 
 
 With Participant 3 removed from the analysis, the Tau-U calculation supports the existence of a moderate treatment effect, suggesting Participants 1 and 2 responded to the intervention. 
+
+
+
+## Results with Participant 3 Baseline Corrected Only 
+
+| **Value** | **Score** |
+| :-------- | :-------: |
+| Tau-U     | .408      |
+| *z*-Score | 1.98      |
+| *p*-value | .048     | 
+
+I think this result indicates the original analysis was run accurately. 
