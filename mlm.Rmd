@@ -25,8 +25,15 @@ data <- import(here("data", "mlm_data.csv"),
                setclass = "tbl_df") 
 
 head(data)
+
+data2 <- import(here("data", "mlm_data2.csv"),
+               setclass = "tbl_df") %>% 
+  na.omit()
+
+head(data2)
 ```
 
+## Analysis All Participants 
 
 ### Null (unconditional) model
 
@@ -83,4 +90,60 @@ summary(d.Model)
 
 Although the effect size is rather large, it is not significant. Additionally, the obtained change in slope between phases is not significant. This does not necessarily suggest a functional relation cannot be determined. As defined in Carter (2013): _effect size_ does not imply causation and effect sizes are independent of demonstrations of experimental control. I think this is worth taking into consideration when comparing this calculation to the visual analysis and Tau-U. 
 
+## Analysis Participants 1 and 2 Only 
 
+### Null (unconditional) model
+
+```{r}
+d.Null <- lme(DV~1,random=~1|Case,data=data2,
+control=list(opt="optim"),na.action="na.omit")
+coefficients(d.Null)
+intervals(d.Null)
+summary(d.Null)
+```
+
+
+### Model with random intercept and change in level (with an autocorrelation component)
+```{r}
+d.Level <- lme(DV~1+Phase,random=~1|Case,data=data2,
+correlation=corAR1(form=~1|Case),control=list(opt="optim"),na.action="na.omit")
+coefficients(d.Level)
+intervals(d.Level)
+summary(d.Level)
+```
+
+
+### Model with random intercept and change in slope (with an autocorrelation component)
+```{r}
+d.Time <- lme(DV~1+Time_CTR,random=~1|Case,data=data2,
+correlation=corAR1(form=~1|Case),control=list(opt="optim"),na.action="na.omit")
+# Rename variables and use only complete cases
+coefficients(d.Time)
+intervals(d.Time)
+summary(d.Time)
+```
+
+
+### Model with random intercept and change in level/slope in Tx (with autocorrelation)
+```{r}
+d.Model <- lme(DV~1+Phase+Time_PhaseCTR,random=~1|Case,data=data2,
+correlation=corAR1(form=~1|Case),control=list(opt="optim"),na.action="na.omit")
+
+# Rename variables and use only complete cases
+coefficients(d.Model)
+intervals(d.Model)
+summary(d.Model)
+```
+
+
+### Results
+
+
+| **Value** | **Score** | **_p_-Value** |
+| :-------- | :-------: | :-----------: |
+| Autocorrelation     | .050      |  |
+| Effect size of change between phases | 15.01      | .015 |
+| Slope | 1.37     |  .304    |
+
+
+With Participant 3 removed, the obtained status tracking data from Participants 1 and 2 generate a very large effect with a *p*-value less than .05. This provides further evidence that Participants 1 and 2 responded to the intervention and demonstrated a significant change in level between the baseline and experimental phases. 

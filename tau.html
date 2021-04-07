@@ -13,6 +13,7 @@
 
 <title>Tau-U</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
@@ -20,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -312,8 +312,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="results" class="section level2">
-<h2>Results</h2>
+<div id="results-for-all-participants" class="section level2">
+<h2>Results for All Participants</h2>
 <table>
 <thead>
 <tr class="header">
@@ -338,6 +338,32 @@ $(document).ready(function () {
 </table>
 <p>The <a href="http://www.singlecaseresearch.org/">Single Case Research free calculator</a> was utilized to calculate the Tau-U effect size. The first and second participants required a baseline trend correction. The weighted Tau-U score was determined to be .605 with a z-score of 2.93 and p-value of .0034, suggesting a moderate effect. The Tau-U calculation appears to support a treatment effect while visual analysis and MLM do not appear to strongly support a functional relation.</p>
 <p>Why the Tau-U calculation appears to support the existence of a moderate treatment effect (and this is a good topic to discuss with Kent) is because the calculation is an overlap method designed to characterize the trends in overlapping data between the two phases of the design. Participant 1 did not have any overlapping data points, while participants 2 and 3 obtained some overlap from baseline to experimental phases. My hypothesis is that because there was no overlapping data for participant 1, whose number of sessions per phase was the most balanced, strenghted the Tau-U calculation.</p>
+</div>
+<div id="results-for-participants-1-and-2-only" class="section level2">
+<h2>Results for Participants 1 and 2 Only</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Value</strong></th>
+<th align="center"><strong>Score</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Tau-U</td>
+<td align="center">.753</td>
+</tr>
+<tr class="even">
+<td align="left"><em>z</em>-Score</td>
+<td align="center">2.92</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>p</em>-value</td>
+<td align="center">.0035</td>
+</tr>
+</tbody>
+</table>
+<p>With Participant 3 removed from the analysis, the Tau-U calculation supports the existence of a moderate treatment effect, suggesting Participants 1 and 2 responded to the intervention.</p>
 </div>
 
 <p>

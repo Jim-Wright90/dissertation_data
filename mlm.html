@@ -13,6 +13,7 @@
 
 <title>Multilevel Model</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
@@ -23,7 +24,6 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -41,19 +41,18 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -73,7 +72,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -480,16 +479,18 @@ div.tocify {
 </div>
 
 
+<div id="analysis-all-participants" class="section level2">
+<h2>Analysis All Participants</h2>
 <div id="null-unconditional-model" class="section level3">
 <h3>Null (unconditional) model</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>d.Null &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span>,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">coefficients</span>(d.Null)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>d.Null <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span>,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Null)</span></code></pre></div>
 <pre><code>##   (Intercept)
 ## 1    22.36181
 ## 2    17.65467
 ## 3    55.76044</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">intervals</span>(d.Null)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Null)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
@@ -506,7 +507,7 @@ div.tocify {
 ##  Within-group standard error:
 ##    lower     est.    upper 
 ## 13.02350 16.40752 20.67083</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">summary</span>(d.Null)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Null)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
 ##        AIC      BIC    logLik
@@ -530,14 +531,14 @@ div.tocify {
 </div>
 <div id="model-with-random-intercept-and-change-in-level-with-an-autocorrelation-component" class="section level3">
 <h3>Model with random intercept and change in level (with an autocorrelation component)</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>d.Level &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span><span class="op">+</span>Phase,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="dt">correlation=</span><span class="kw">corAR1</span>(<span class="dt">form=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case),<span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">coefficients</span>(d.Level)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>d.Level <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>Phase,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">correlation=</span><span class="fu">corAR1</span>(<span class="at">form=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case),<span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Level)</span></code></pre></div>
 <pre><code>##   (Intercept)    Phase
 ## 1    15.73926 9.602826
 ## 2    13.56880 9.602826
 ## 3    49.08711 9.602826</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">intervals</span>(d.Level)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Level)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
@@ -561,7 +562,7 @@ div.tocify {
 ##  Within-group standard error:
 ##    lower     est.    upper 
 ## 11.39588 16.34640 23.44749</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">summary</span>(d.Level)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Level)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
 ##        AIC      BIC    logLik
@@ -594,15 +595,15 @@ div.tocify {
 </div>
 <div id="model-with-random-intercept-and-change-in-slope-with-an-autocorrelation-component" class="section level3">
 <h3>Model with random intercept and change in slope (with an autocorrelation component)</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>d.Time &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span><span class="op">+</span>Time_CTR,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="dt">correlation=</span><span class="kw">corAR1</span>(<span class="dt">form=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case),<span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="co"># Rename variables and use only complete cases</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="kw">coefficients</span>(d.Time)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>d.Time <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>Time_CTR,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="at">correlation=</span><span class="fu">corAR1</span>(<span class="at">form=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case),<span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename variables and use only complete cases</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Time)</span></code></pre></div>
 <pre><code>##   (Intercept) Time_CTR
 ## 1    16.06773 2.162206
 ## 2    17.92851 2.162206
 ## 3    58.65117 2.162206</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">intervals</span>(d.Time)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Time)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
@@ -626,7 +627,7 @@ div.tocify {
 ##  Within-group standard error:
 ##    lower     est.    upper 
 ## 10.82437 14.67279 19.88943</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">summary</span>(d.Time)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Time)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
 ##        AIC      BIC    logLik
@@ -659,16 +660,16 @@ div.tocify {
 </div>
 <div id="model-with-random-intercept-and-change-in-levelslope-in-tx-with-autocorrelation" class="section level3">
 <h3>Model with random intercept and change in level/slope in Tx (with autocorrelation)</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>d.Model &lt;-<span class="st"> </span><span class="kw">lme</span>(DV<span class="op">~</span><span class="dv">1</span><span class="op">+</span>Phase<span class="op">+</span>Time_PhaseCTR,<span class="dt">random=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case,<span class="dt">data=</span>data,</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="dt">correlation=</span><span class="kw">corAR1</span>(<span class="dt">form=</span><span class="op">~</span><span class="dv">1</span><span class="op">|</span>Case),<span class="dt">control=</span><span class="kw">list</span>(<span class="dt">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="dt">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># Rename variables and use only complete cases</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="kw">coefficients</span>(d.Model)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>d.Model <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>Phase<span class="sc">+</span>Time_PhaseCTR,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="at">correlation=</span><span class="fu">corAR1</span>(<span class="at">form=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case),<span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename variables and use only complete cases</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Model)</span></code></pre></div>
 <pre><code>##   (Intercept)    Phase Time_PhaseCTR
 ## 1    14.36588 10.17285      1.840509
 ## 2    13.13904 10.17285      1.840509
 ## 3    47.92556 10.17285      1.840509</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">intervals</span>(d.Model)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Model)</span></code></pre></div>
 <pre><code>## Approximate 95% confidence intervals
 ## 
 ##  Fixed effects:
@@ -693,7 +694,7 @@ div.tocify {
 ##  Within-group standard error:
 ##    lower     est.    upper 
 ## 11.34610 16.90492 25.18718</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">summary</span>(d.Model)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Model)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##  Data: data 
 ##        AIC      BIC   logLik
@@ -755,6 +756,282 @@ div.tocify {
 </tbody>
 </table>
 <p>Although the effect size is rather large, it is not significant. Additionally, the obtained change in slope between phases is not significant. This does not necessarily suggest a functional relation cannot be determined. As defined in Carter (2013): <em>effect size</em> does not imply causation and effect sizes are independent of demonstrations of experimental control. I think this is worth taking into consideration when comparing this calculation to the visual analysis and Tau-U.</p>
+</div>
+</div>
+<div id="analysis-participants-1-and-2-only" class="section level2">
+<h2>Analysis Participants 1 and 2 Only</h2>
+<div id="null-unconditional-model-1" class="section level3">
+<h3>Null (unconditional) model</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>d.Null <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span>,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data2,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Null)</span></code></pre></div>
+<pre><code>##   (Intercept)
+## 1    19.48376
+## 2    19.43932</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Null)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                lower     est.   upper
+## (Intercept) 13.32787 19.46154 25.5952
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                       lower      est.       upper
+## sd((Intercept)) 3.89948e-12 0.3992937 40886326955
+## 
+##  Within-group standard error:
+##    lower     est.    upper 
+## 11.43247 15.08514 19.90486</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Null)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data2 
+##        AIC      BIC    logLik
+##   215.8996 219.5562 -104.9498
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:   0.3992937 15.08514
+## 
+## Fixed effects: DV ~ 1 
+##                Value Std.Error DF  t-value p-value
+## (Intercept) 19.46154  2.971883 24 6.548556       0
+## 
+## Standardized Within-Group Residuals:
+##        Min         Q1        Med         Q3        Max 
+## -1.0897689 -0.6279454 -0.2957571  0.6142629  2.6858373 
+## 
+## Number of Observations: 26
+## Number of Groups: 2</code></pre>
+</div>
+<div id="model-with-random-intercept-and-change-in-level-with-an-autocorrelation-component-1" class="section level3">
+<h3>Model with random intercept and change in level (with an autocorrelation component)</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>d.Level <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>Phase,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data2,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="at">correlation=</span><span class="fu">corAR1</span>(<span class="at">form=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case),<span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Level)</span></code></pre></div>
+<pre><code>##   (Intercept)    Phase
+## 1    9.262197 15.60619
+## 2    9.261188 15.60619</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Level)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                  lower      est.    upper
+## (Intercept) 0.01550107  9.261693 18.50788
+## Phase       4.17728970 15.606188 27.03509
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                        lower      est.        upper
+## sd((Intercept)) 6.769095e-25 0.1030037 1.567383e+22
+## 
+##  Correlation structure:
+##          lower        est.     upper
+## Phi -0.3731402 0.009216403 0.3888969
+## attr(,&quot;label&quot;)
+## [1] &quot;Correlation structure:&quot;
+## 
+##  Within-group standard error:
+##    lower     est.    upper 
+## 10.01420 13.31154 17.69458</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Level)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data2 
+##        AIC      BIC    logLik
+##   207.3619 213.2522 -98.68097
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:   0.1030037 13.31154
+## 
+## Correlation Structure: AR(1)
+##  Formula: ~1 | Case 
+##  Parameter estimate(s):
+##         Phi 
+## 0.009216403 
+## Fixed effects: DV ~ 1 + Phase 
+##                 Value Std.Error DF  t-value p-value
+## (Intercept)  9.261693  4.469658 23 2.072126  0.0496
+## Phase       15.606188  5.524790 23 2.824757  0.0096
+##  Correlation: 
+##       (Intr)
+## Phase -0.808
+## 
+## Standardized Within-Group Residuals:
+##         Min          Q1         Med          Q3         Max 
+## -1.49256840 -0.44420007  0.05546369  0.38550114  2.63918458 
+## 
+## Number of Observations: 26
+## Number of Groups: 2</code></pre>
+</div>
+<div id="model-with-random-intercept-and-change-in-slope-with-an-autocorrelation-component-1" class="section level3">
+<h3>Model with random intercept and change in slope (with an autocorrelation component)</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>d.Time <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>Time_CTR,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data2,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="at">correlation=</span><span class="fu">corAR1</span>(<span class="at">form=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case),<span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename variables and use only complete cases</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Time)</span></code></pre></div>
+<pre><code>##   (Intercept) Time_CTR
+## 1    16.67316 1.863349
+## 2    16.67540 1.863349</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Time)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                  lower      est.     upper
+## (Intercept) 10.4306487 16.674279 22.917910
+## Time_CTR     0.4292885  1.863349  3.297409
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                        lower     est.       upper
+## sd((Intercept)) 1.318692e-12 0.220448 36852668914
+## 
+##  Correlation structure:
+##          lower       est.     upper
+## Phi -0.3071034 0.08683331 0.4553658
+## attr(,&quot;label&quot;)
+## [1] &quot;Correlation structure:&quot;
+## 
+##  Within-group standard error:
+##     lower      est.     upper 
+##  9.967724 13.319463 17.798254</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Time)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data2 
+##       AIC      BIC    logLik
+##   211.223 217.1133 -100.6115
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:    0.220448 13.31946
+## 
+## Correlation Structure: AR(1)
+##  Formula: ~1 | Case 
+##  Parameter estimate(s):
+##        Phi 
+## 0.08683331 
+## Fixed effects: DV ~ 1 + Time_CTR 
+##                 Value Std.Error DF  t-value p-value
+## (Intercept) 16.674279 3.0182039 23 5.524570  0.0000
+## Time_CTR     1.863349 0.6932322 23 2.687914  0.0131
+##  Correlation: 
+##          (Intr)
+## Time_CTR -0.345
+## 
+## Standardized Within-Group Residuals:
+##        Min         Q1        Med         Q3        Max 
+## -1.7157790 -0.3945040 -0.1035519  0.3032299  2.8332068 
+## 
+## Number of Observations: 26
+## Number of Groups: 2</code></pre>
+</div>
+<div id="model-with-random-intercept-and-change-in-levelslope-in-tx-with-autocorrelation-1" class="section level3">
+<h3>Model with random intercept and change in level/slope in Tx (with autocorrelation)</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>d.Model <span class="ot">&lt;-</span> <span class="fu">lme</span>(DV<span class="sc">~</span><span class="dv">1</span><span class="sc">+</span>Phase<span class="sc">+</span>Time_PhaseCTR,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case,<span class="at">data=</span>data2,</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="at">correlation=</span><span class="fu">corAR1</span>(<span class="at">form=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>Case),<span class="at">control=</span><span class="fu">list</span>(<span class="at">opt=</span><span class="st">&quot;optim&quot;</span>),<span class="at">na.action=</span><span class="st">&quot;na.omit&quot;</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename variables and use only complete cases</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(d.Model)</span></code></pre></div>
+<pre><code>##   (Intercept)    Phase Time_PhaseCTR
+## 1    9.387673 15.00769      1.374845
+## 2    9.387043 15.00769      1.374845</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">intervals</span>(d.Model)</span></code></pre></div>
+<pre><code>## Approximate 95% confidence intervals
+## 
+##  Fixed effects:
+##                    lower      est.    upper
+## (Intercept)   -0.2033365  9.387358 18.97805
+## Phase          3.1577721 15.007691 26.85761
+## Time_PhaseCTR -1.3332896  1.374845  4.08298
+## attr(,&quot;label&quot;)
+## [1] &quot;Fixed effects:&quot;
+## 
+##  Random Effects:
+##   Level: Case 
+##                        lower      est.        upper
+## sd((Intercept)) 2.061527e-26 0.1018918 5.036046e+23
+## 
+##  Correlation structure:
+##          lower       est.     upper
+## Phi -0.3615714 0.05043287 0.4459583
+## attr(,&quot;label&quot;)
+## [1] &quot;Correlation structure:&quot;
+## 
+##  Within-group standard error:
+##     lower      est.     upper 
+##  9.925827 13.346116 17.944984</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d.Model)</span></code></pre></div>
+<pre><code>## Linear mixed-effects model fit by REML
+##  Data: data2 
+##       AIC      BIC    logLik
+##   205.921 212.7339 -96.96049
+## 
+## Random effects:
+##  Formula: ~1 | Case
+##         (Intercept) Residual
+## StdDev:   0.1018918 13.34612
+## 
+## Correlation Structure: AR(1)
+##  Formula: ~1 | Case 
+##  Parameter estimate(s):
+##        Phi 
+## 0.05043287 
+## Fixed effects: DV ~ 1 + Phase + Time_PhaseCTR 
+##                   Value Std.Error DF  t-value p-value
+## (Intercept)    9.387358  4.624533 22 2.029904  0.0546
+## Phase         15.007691  5.713908 22 2.626520  0.0154
+## Time_PhaseCTR  1.374845  1.305834 22 1.052848  0.3038
+##  Correlation: 
+##               (Intr) Phase 
+## Phase         -0.803       
+## Time_PhaseCTR -0.013 -0.056
+## 
+## Standardized Within-Group Residuals:
+##         Min          Q1         Med          Q3         Max 
+## -1.65928837 -0.42294962  0.04590414  0.29349822  2.77080473 
+## 
+## Number of Observations: 26
+## Number of Groups: 2</code></pre>
+</div>
+<div id="results-1" class="section level3">
+<h3>Results</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><strong>Value</strong></th>
+<th align="center"><strong>Score</strong></th>
+<th align="center"><strong><em>p</em>-Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Autocorrelation</td>
+<td align="center">.050</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Effect size of change between phases</td>
+<td align="center">15.01</td>
+<td align="center">.015</td>
+</tr>
+<tr class="odd">
+<td align="left">Slope</td>
+<td align="center">1.37</td>
+<td align="center">.304</td>
+</tr>
+</tbody>
+</table>
+<p>With Participant 3 removed, the obtained status tracking data from Participants 1 and 2 generate a very large effect with a <em>p</em>-value less than .05. This provides further evidence that Participants 1 and 2 responded to the intervention and demonstrated a significant change in level between the baseline and experimental phases.</p>
+</div>
 </div>
 
 <p>
