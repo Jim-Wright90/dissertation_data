@@ -37,6 +37,7 @@ output:
   1. [Presentation Slides](handouts/dissertation defense_JW_v2_publish.pptx)
   2. [Presentation Handouts](handouts/dissertation defense_JW_handouts.pdf)
   3. [Dissertation Manuscript](handouts/JW_Dissertation_ETD.pdf)
+  4. [Dissertation Defense Recording](https://youtu.be/LX566IbMtE0)
 
 
 ```{r, include=FALSE}

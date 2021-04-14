@@ -84,7 +84,7 @@ summary(d.Model)
 | **Value** | **Score** | **_p_-Value** |
 | :-------- | :-------: | :-----------: |
 | Autocorrelation     | .494      |  |
-| Effect size of change between phases | 10.17      | .177 |
+| Level | 10.17      | .177 |
 | Slope | 1.84     |  .337    |
 
 
@@ -142,7 +142,7 @@ summary(d.Model)
 | **Value** | **Score** | **_p_-Value** |
 | :-------- | :-------: | :-----------: |
 | Autocorrelation     | .050      |  |
-| Effect size of change between phases | 15.01      | .015 |
+| Level | 15.01      | .015 |
 | Slope | 1.37     |  .304    |
 
 
