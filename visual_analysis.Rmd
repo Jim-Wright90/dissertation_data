@@ -145,7 +145,7 @@ Visual Analysis characteristics to consider:
 
 ## SCAN Demonstration {.tabset .tabset-fade .tabset-pills}
 
-These are plots created with the SCAN package, which is a R packaged designed specifically the plot and analyze single case research data. 
+These are plots created with the SCAN package, which is a R packaged designed specifically to plot and analyze single case research data. 
 
 ```{r, include=FALSE}
 case_1 <- scdf(
