@@ -13,7 +13,7 @@
 
 <title>Visual Analysis</title>
 
-<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
@@ -333,7 +333,7 @@ div.tocify {
 </li>
 <li>
   <a href="https://github.com/Jim-Wright90/dissertation_data.git">
-    <span class="fas fa-github"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -366,6 +366,10 @@ div.tocify {
 <li><strong>Immediacy of Effect</strong>: The other critical aspect of visual analysis to consider to determine the existence of a functional relation for the study. Only participant 1 demonstrated a consistent jump in performance upon the implementation of the IV to demonstrate the immediacy of effect of the IV. Participant 2 immediately decreased in her performance upon the implementation of the IV, but she then demonstrated a strong increase to reach her first peak in the experimental phase data. Therefore, participant 2 demonstrated slight immediacy of effect, but this first peak of performance was followed by a sharp decrease until the second peak occurred at the end of the study. Finally, participant 3 demonstrated no immediacy of effect following the implementation of the IV. Her experimental phase data points remained on the same level as her final four baseline data points.</li>
 </ol>
 <p><strong>Final Decision</strong>: I don’t think a functional relation can be determined through visual analysis. Visual analysis should be the north star of SCR analysis, and I will use the MLM and Tau-U results to provide an overarching discussion of what the data reveals. Overall, there appears to be a benefit of treatment, but within the current design and research question, it is challenging to conclude a functional relation exists between the addition of individualized cognitive strategy instruction to psychoeducation and the achievement of student RTL targets.</p>
+</div>
+<div id="manuscript-graph" class="section level2">
+<h2>Manuscript Graph</h2>
+<p><img src="tools/Visual%20Analysis_3.png" style="width:100.0%" /></p>
 </div>
 <div id="scan-demonstration" class="section level2 tabset tabset-fade tabset-pills">
 <h2 class="tabset tabset-fade tabset-pills">SCAN Demonstration</h2>
@@ -424,6 +428,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

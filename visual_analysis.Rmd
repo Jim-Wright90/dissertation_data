@@ -140,7 +140,9 @@ Visual Analysis characteristics to consider:
 **Final Decision**: I don't think a functional relation can be determined through visual analysis. Visual analysis should be the north star of SCR analysis, and I will use the MLM and Tau-U results to provide an overarching discussion of what the data reveals. Overall, there appears to be a benefit of treatment, but within the current design and research question, it is challenging to conclude a functional relation exists between the addition of individualized cognitive strategy instruction to psychoeducation and the achievement of student RTL targets. 
 
 
+## Manuscript Graph 
 
+![](tools/Visual Analysis_3.png){width=100%}
 
 
 ## SCAN Demonstration {.tabset .tabset-fade .tabset-pills}
